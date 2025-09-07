@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 
-import personalJourney from "/public/content/personal-journey.json";
+import personalJourney from "../assets/content/personal-journey.json";
 /**
  * PersonalJourneyPage
  * - SPA-friendly page for a personal portfolio
