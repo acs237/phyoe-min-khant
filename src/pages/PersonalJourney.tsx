@@ -1,5 +1,10 @@
 import React, { useMemo, useState } from "react";
 import clsx from "clsx";
+import ImageCarousel from "../components/ImageCarousel";
+
+import venice from "../assets/images/venice.jpeg";
+import stonehenge from "../assets/images/stonehenge.jpeg";
+import amsterdam from "../assets/images/amsterdam.jpeg";
 
 /**
  * PersonalJourneyPage
@@ -26,18 +31,21 @@ export default function PersonalJourneyPage() {
             title: "ကျွန်တော်နှင့်သင်္ချာ 1",
             content:
               "မင်္ဂလာပါ။ ကျွန်တော်အခုအချိန်မှာ ဆောက်လုပ်ရေးအင်ဂျင်နီယာ ပညာရပ်ကို တက်ရောက်လေ့လာနေပါတယ်။ တက္ကသိုလ်အဆင့်မှာ သင်ယူနေစဉ် အတွင်း စွမ်းအင်နည်းပညာ၊ သံမဏိအခြေခံ ဖွဲ့စည်းပုံများ၊ နည်းပညာပိုင်းဆိုင်ရာ စမ်းသပ်မှုများကို လေ့လာခဲ့ပြီး လက်တွေ့လုပ်ငန်းခွင်အတွက် အသုံးချနိုင်ဖို့ ကြိုးစားနေပါသည်။ ထို့အပြင် သုတေသန စီမံကိန်းတွင် သင်္ချာနဲ့ ကွန်ပျူတာ စမ်းသပ်ပုံစံများကို အသုံးချကာ နည်းပညာပိုင်းဆိုင်ရာ အမြှုပ်အထုတ်များကို ရှာဖွေနေပါတယ်။ အနာဂတ်မှာတော့ ဒီပညာရပ်ကို အခြေခံပြီး အဆင့်မြင့် သုတေသနများနှင့် နိုင်ငံတကာ လက်တွေ့လုပ်ငန်းများတွင် ပါဝင်ရန် ရည်မှန်းထားပါတယ်။",
+            images: [venice, stonehenge, amsterdam],
           },
           {
             id: "ed-2",
             title: "Foundation in Engineering",
             content:
               "Built fundamentals in solid mechanics, materials, and computational methods (FEM/SBFEM exposure).",
+            images: [venice, stonehenge, amsterdam],
           },
           {
             id: "ed-3",
             title: "Certifications & Exams",
             content:
               "PTE prep, NAATI CCL Burmese practice; Engineers Australia pathways & professional year planning.",
+            images: [venice, stonehenge, amsterdam],
           },
         ],
       },
@@ -51,18 +59,21 @@ export default function PersonalJourneyPage() {
             title: "RC Column Parametric Study",
             content:
               "8-storey mid-column model; sustained/short-term load ratios; λ up to 120; MATLAB parametric sweeps & code-to-code validation.",
+            images: [venice, venice, venice],
           },
           {
             id: "prj-2",
             title: "OS/161 Kernel Exercises",
             content:
               "Threading, semaphores/locks/CVs; TLB handling; two-level page tables; Banker's algorithm experiments.",
+            images: [venice, venice, venice],
           },
           {
             id: "prj-3",
             title: "WSUD Stormwater Reuse (CVEN9000)",
             content:
               "Group report: catchment modeling (ARR), tank sizing, water quality management, and reuse strategy.",
+            images: [venice, venice, venice],
           },
         ],
       },
@@ -76,12 +87,14 @@ export default function PersonalJourneyPage() {
             title: "Coaching & Mentoring",
             content:
               "Peer mentoring for coursework, coding clinics for MATLAB/LaTeX, study planning for international students.",
+            images: [venice, venice, venice],
           },
           {
             id: "exp-2",
             title: "Vlogging & Communication",
             content:
               "STEM explainer videos; tech notes and portfolio updates; clarity-first content style.",
+            images: [venice, venice, venice],
           },
         ],
       },
@@ -95,12 +108,14 @@ export default function PersonalJourneyPage() {
             title: "First Parametric Sweep Complete",
             content:
               "Generated slenderness–capacity curves; compared with AS3600:2018 & ACI 318-19 formulae.",
+            images: [venice, venice, venice],
           },
           {
             id: "mile-2",
             title: "Kernel Synchronisation Lab",
             content:
               "Implemented multi-waiter wakeups using semaphores and validated via stress tests.",
+            images: [venice, venice, venice],
           },
         ],
       },
@@ -202,13 +217,13 @@ export default function PersonalJourneyPage() {
                           <p className="mt-1 text-sm text-sky-600">Learn More</p>
                         </div>
                         <span
-                          className={[
+                          className={clsx(
                             "mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border",
                             open
                               ? "rotate-45 border-sky-400 text-sky-600"
                               : "border-sky-200 text-sky-500",
                             "transition-transform",
-                          ].join(" ")}
+                          )}
                           aria-hidden
                         >
                           +
@@ -223,6 +238,9 @@ export default function PersonalJourneyPage() {
                         className="mx-5 mb-5 mt-0 overflow-hidden rounded-xl border border-sky-100 bg-sky-50/60 p-4 text-sky-800"
                       >
                         {item.content}
+                        <ImageCarousel
+                            images={item.images}
+                        />
                       </div>
                     )}
                   </div>

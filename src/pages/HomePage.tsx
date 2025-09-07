@@ -9,7 +9,7 @@ export default function Homepage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-sky-100 to-white flex flex-col items-center justify-center p-8">
         {/* Main Content Container */}
-        <div className="max-w-4xl w-full text-center">
+        <div className="max-w-5xl w-full text-center">
             
             {/* Title Section */}
             <div className="mb-12 grid grid-cols-2 gap-6">
@@ -20,7 +20,7 @@ export default function Homepage() {
                 <img
                     src={profileImg}
                     alt="My profile"
-                    className="w-48 h-48 rounded-full shadow-lg"
+                    className="w-48 h-48 rounded-full shadow-lg mx-auto"
                 />
             </div>
 
