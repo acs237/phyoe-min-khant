@@ -1,11 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { use, useMemo, useState } from "react";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 
-import venice from "../assets/images/venice.jpeg";
-import stonehenge from "../assets/images/stonehenge.jpeg";
-import amsterdam from "../assets/images/amsterdam.jpeg";
-
+import personalJourney from "../assets/content/personal-journey.json";
 /**
  * PersonalJourneyPage
  * - SPA-friendly page for a personal portfolio
@@ -19,109 +16,9 @@ export default function PersonalJourneyPage() {
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `key`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
-  const topics = useMemo(
-    () => [
-      {
-        key: "mathematics",
-        label: "ကျွန်တော်နှင့်သင်္ချာ",
-        icon: "🎓",
-        items: [
-          {
-            id: "ed-1",
-            title: "ကျွန်တော်နှင့်သင်္ချာ 1",
-            content:
-              "မင်္ဂလာပါ။ ကျွန်တော်အခုအချိန်မှာ ဆောက်လုပ်ရေးအင်ဂျင်နီယာ ပညာရပ်ကို တက်ရောက်လေ့လာနေပါတယ်။ တက္ကသိုလ်အဆင့်မှာ သင်ယူနေစဉ် အတွင်း စွမ်းအင်နည်းပညာ၊ သံမဏိအခြေခံ ဖွဲ့စည်းပုံများ၊ နည်းပညာပိုင်းဆိုင်ရာ စမ်းသပ်မှုများကို လေ့လာခဲ့ပြီး လက်တွေ့လုပ်ငန်းခွင်အတွက် အသုံးချနိုင်ဖို့ ကြိုးစားနေပါသည်။ ထို့အပြင် သုတေသန စီမံကိန်းတွင် သင်္ချာနဲ့ ကွန်ပျူတာ စမ်းသပ်ပုံစံများကို အသုံးချကာ နည်းပညာပိုင်းဆိုင်ရာ အမြှုပ်အထုတ်များကို ရှာဖွေနေပါတယ်။ အနာဂတ်မှာတော့ ဒီပညာရပ်ကို အခြေခံပြီး အဆင့်မြင့် သုတေသနများနှင့် နိုင်ငံတကာ လက်တွေ့လုပ်ငန်းများတွင် ပါဝင်ရန် ရည်မှန်းထားပါတယ်။",
-            images: [venice, stonehenge, amsterdam],
-          },
-          {
-            id: "ed-2",
-            title: "Foundation in Engineering",
-            content:
-              "Built fundamentals in solid mechanics, materials, and computational methods (FEM/SBFEM exposure).",
-            images: [venice, stonehenge, amsterdam],
-          },
-          {
-            id: "ed-3",
-            title: "Certifications & Exams",
-            content:
-              "PTE prep, NAATI CCL Burmese practice; Engineers Australia pathways & professional year planning.",
-            images: [venice, stonehenge, amsterdam],
-          },
-        ],
-      },
-      {
-        key: "projects",
-        label: "Projects",
-        icon: "🧪",
-        items: [
-          {
-            id: "prj-1",
-            title: "RC Column Parametric Study",
-            content:
-              "8-storey mid-column model; sustained/short-term load ratios; λ up to 120; MATLAB parametric sweeps & code-to-code validation.",
-            images: [venice, venice, venice],
-          },
-          {
-            id: "prj-2",
-            title: "OS/161 Kernel Exercises",
-            content:
-              "Threading, semaphores/locks/CVs; TLB handling; two-level page tables; Banker's algorithm experiments.",
-            images: [venice, venice, venice],
-          },
-          {
-            id: "prj-3",
-            title: "WSUD Stormwater Reuse (CVEN9000)",
-            content:
-              "Group report: catchment modeling (ARR), tank sizing, water quality management, and reuse strategy.",
-            images: [venice, venice, venice],
-          },
-        ],
-      },
-      {
-        key: "experience",
-        label: "Experience",
-        icon: "💼",
-        items: [
-          {
-            id: "exp-1",
-            title: "Coaching & Mentoring",
-            content:
-              "Peer mentoring for coursework, coding clinics for MATLAB/LaTeX, study planning for international students.",
-            images: [venice, venice, venice],
-          },
-          {
-            id: "exp-2",
-            title: "Vlogging & Communication",
-            content:
-              "STEM explainer videos; tech notes and portfolio updates; clarity-first content style.",
-            images: [venice, venice, venice],
-          },
-        ],
-      },
-      {
-        key: "milestones",
-        label: "Milestones",
-        icon: "🏁",
-        items: [
-          {
-            id: "mile-1",
-            title: "First Parametric Sweep Complete",
-            content:
-              "Generated slenderness–capacity curves; compared with AS3600:2018 & ACI 318-19 formulae.",
-            images: [venice, venice, venice],
-          },
-          {
-            id: "mile-2",
-            title: "Kernel Synchronisation Lab",
-            content:
-              "Implemented multi-waiter wakeups using semaphores and validated via stress tests.",
-            images: [venice, venice, venice],
-          },
-        ],
-      },
-    ],
-    []
-  );
+
+
+  const topics = personalJourney;
 
   // Currently selected topic
   const [selectedKey, setSelectedKey] = useState(topics[0].key);
@@ -253,3 +150,7 @@ export default function PersonalJourneyPage() {
     </div>
   );
 }
+function loadContent(arg0: string) {
+    throw new Error("Function not implemented.");
+}
+
