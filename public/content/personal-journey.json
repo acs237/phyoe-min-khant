@@ -7,19 +7,19 @@
         "id": "ed-1",
         "title": "ကျွန်တော်နှင့်သင်္ချာ 1",
         "content": "မင်္ဂလာပါ။ ကျွန်တော်အခုအချိန်မှာ ဆောက်လုပ်ရေးအင်ဂျင်နီယာ ပညာရပ်ကို တက်ရောက်လေ့လာနေပါတယ်။ တက္ကသိုလ်အဆင့်မှာ သင်ယူနေစဉ် အတွင်း စွမ်းအင်နည်းပညာ၊ သံမဏိအခြေခံ ဖွဲ့စည်းပုံများ၊ နည်းပညာပိုင်းဆိုင်ရာ စမ်းသပ်မှုများကို လေ့လာခဲ့ပြီး လက်တွေ့လုပ်ငန်းခွင်အတွက် အသုံးချနိုင်ဖို့ ကြိုးစားနေပါသည်။ ထို့အပြင် သုတေသန စီမံကိန်းတွင် သင်္ချာနဲ့ ကွန်ပျူတာ စမ်းသပ်ပုံစံများကို အသုံးချကာ နည်းပညာပိုင်းဆိုင်ရာ အမြှုပ်အထုတ်များကို ရှာဖွေနေပါတယ်။ အနာဂတ်မှာတော့ ဒီပညာရပ်ကို အခြေခံပြီး အဆင့်မြင့် သုတေသနများနှင့် နိုင်ငံတကာ လက်တွေ့လုပ်ငန်းများတွင် ပါဝင်ရန် ရည်မှန်းထားပါတယ်။",
-        "images": ["src/assets/images/venice.jpeg", "stonehenge", "amsterdam"]
+        "images": ["images/venice.jpeg", "stonehenge", "amsterdam"]
       },
       {
         "id": "ed-2",
         "title": "Foundation in Engineering",
         "content": "Built fundamentals in solid mechanics, materials, and computational methods (FEM/SBFEM exposure).",
-        "images": ["src/assets/images/venice.jpeg", "stonehenge", "amsterdam"]
+        "images": ["images/venice.jpeg", "stonehenge", "amsterdam"]
       },
       {
         "id": "ed-3",
         "title": "Certifications & Exams",
         "content": "PTE prep, NAATI CCL Burmese practice; Engineers Australia pathways & professional year planning.",
-        "images": ["src/assets/images/venice.jpeg", "stonehenge", "amsterdam"]
+        "images": ["images/venice.jpeg", "stonehenge", "amsterdam"]
       }
     ]
   },
@@ -31,13 +31,13 @@
         "id": "prj-1",
         "title": "RC Column Parametric Study",
         "content": "8-storey mid-column model; sustained/short-term load ratios; λ up to 120; MATLAB parametric sweeps & code-to-code validation.",
-        "images": ["src/assets/images/venice.jpeg", "src/assets/images/venice.jpeg", "src/assets/images/venice.jpeg"]
+        "images": ["images/venice.jpeg", "images/venice.jpeg", "images/venice.jpeg"]
       },
       {
         "id": "prj-2",
         "title": "OS/161 Kernel Exercises",
         "content": "Threading, semaphores/locks/CVs; TLB handling; two-level page tables; Banker's algorithm experiments.",
-        "images": ["src/assets/images/venice.jpeg", "src/assets/images/venice.jpeg", "src/assets/images/venice.jpeg"]
+        "images": ["images/venice.jpeg", "images/venice.jpeg", "images/venice.jpeg"]
       },
       {
         "id": "prj-3",

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import profileImg from "../assets/profile-picture.png";
+import profileImg from "/images/profile-picture.png";
 
 export default function Homepage() {
     const navigate = useNavigate();
