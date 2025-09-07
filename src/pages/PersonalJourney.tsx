@@ -1,4 +1,4 @@
-import React, { use, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 
@@ -147,7 +147,3 @@ export default function PersonalJourneyPage() {
     </div>
   );
 }
-function loadContent(arg0: string) {
-    throw new Error("Function not implemented.");
-}
-
