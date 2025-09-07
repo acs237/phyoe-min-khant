@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
+import profileImg from "../assets/profile-picture.png";
+
 export default function Homepage() {
     const navigate = useNavigate();
 
@@ -10,12 +12,21 @@ export default function Homepage() {
         <div className="max-w-4xl w-full text-center">
             
             {/* Title Section */}
-            <div className="mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold text-sky-900 mb-4 tracking-tight">
-                Hello, I am 
-                <span className="block text-sky-600 mt-2">Phyoe Min Khant</span>
-            </h1>
-            <div className="w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
+            <div className="mb-12 grid grid-cols-2 gap-6">
+                <h1 className="text-5xl md:text-6xl font-bold text-sky-900 mb-4 tracking-tight">
+                    Hello, I am 
+                    <span className="block text-sky-600 mt-2">Phyoe Min Khant</span>
+                </h1>
+                <img
+                    src={profileImg}
+                    alt="My profile"
+                    className="w-48 h-48 rounded-full shadow-lg"
+                />
+            </div>
+
+            <div className="text-sky-700 text-lg mb-16">
+                <p className="text-sky-600 text-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div className="mt-8 w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
             </div>
 
             {/* Navigation Buttons */}
