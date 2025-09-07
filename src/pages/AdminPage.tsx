@@ -33,7 +33,7 @@ const AdminPage: React.FC = () => {
 
   if (!authenticated) {
     return (
-      <div className="bg-gradient-to-br from-sky-100 to-whiteflex flex-col items-center justify-center min-h-screen">
+      <div className="bg-gradient-to-br from-sky-100 to-white flex flex-col items-center justify-center min-h-screen">
         <h2 className="text-xl mb-4">Enter Admin Password</h2>
         <input
           type="password"
@@ -53,14 +53,14 @@ const AdminPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-sky-100 to-white p-6 max-w-lg mx-auto">
+    <div className="bg-gradient-to-br from-sky-100 to-white flex flex-col items-center justify-center min-h-screen p-6 mx-auto">
       <h2 className="text-5xl md:text-6xl font-bold text-sky-900 mb-4 tracking-tight">Add New Content</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         {/* Topic selection */}
         <select
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
-          className="rounded-2xl border-2 border-sky-200 bg-white p-0"
+          className="rounded-2xl border-2 border-sky-200 bg-white p-4"
           required
         >
           <option value="">Select a Topic</option>
@@ -77,7 +77,7 @@ const AdminPage: React.FC = () => {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="bg-gradient-to-br from-sky-100 to-white p-6 mx-auto px-3 py-2"
+          className="rounded-2xl border-2 border-sky-200 bg-white p-4"
           required
         />
 
@@ -86,7 +86,7 @@ const AdminPage: React.FC = () => {
           placeholder="Content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="border rounded px-3 py-2"
+          className="rounded-2xl border-2 border-sky-200 bg-white p-4"
           rows={4}
           required
         />
@@ -94,7 +94,7 @@ const AdminPage: React.FC = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Submit
         </button>

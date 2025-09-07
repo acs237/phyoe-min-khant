@@ -30,22 +30,24 @@ export default function Homepage() {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+            {/* TODO: use this when there's more items*/}
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 place-items-center"> */}
+            <div className="grid grid-cols-1 gap-6 mt-16 place-items-center">
             
             {/* My Personal Journey */}
             <button 
                 onClick={() => navigate("/personal-journey")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-                <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                {/* <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
                 👤
-                </div>
+                </div> */}
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Personal Journey</h3>
                 <p className="text-sky-600 text-sm">Learn More</p>
             </button>
 
             {/* My Vlog */}
-            <button 
+            {/* <button 
                 onClick={() => navigate("/vlog")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
@@ -54,10 +56,10 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Vlog</h3>
                 <p className="text-sky-600 text-sm">Learn More</p>
-            </button>
+            </button> */}
 
             {/* My Coaching Journey */}
-            <button 
+            {/* <button 
                 onClick={() => navigate("/coaching")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
@@ -66,10 +68,10 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Coaching Journey</h3>
                 <p className="text-sky-600 text-sm">Learn More</p>
-            </button>
+            </button> */}
 
             {/* About Me */}
-            <button 
+            {/* <button 
                 onClick={() => navigate("/about-me")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
@@ -78,7 +80,7 @@ export default function Homepage() {
                 </div>
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">About Me</h3>
                 <p className="text-sky-600 text-sm">Learn More</p>
-            </button>
+            </button> */}
             </div>
 
             {/* Decorative Elements */}

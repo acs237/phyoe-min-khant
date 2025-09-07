@@ -62,7 +62,7 @@ export default function PersonalJourneyPage() {
         </header>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[400px_1fr]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[250px_1fr]">
           {/* Left: Topics */}
           <aside className="lg:sticky lg:top-6 self-start">
             <nav className="space-y-2">
@@ -80,9 +80,6 @@ export default function PersonalJourneyPage() {
                 )}
                     aria-pressed={active}
                   >
-                    <span className="mr-2" aria-hidden>
-                      {topic.icon}
-                    </span>
                     <span className="font-semibold">{topic.label}</span>
                   </button>
                 );

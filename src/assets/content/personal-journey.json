@@ -2,7 +2,6 @@
   {
     "key": "mathematics",
     "label": "ကျွန်တော်နှင့်သင်္ချာ",
-    "icon": "🎓",
     "items": [
       {
         "id": "ed-1",
@@ -27,7 +26,6 @@
   {
     "key": "projects",
     "label": "Projects",
-    "icon": "🧪",
     "items": [
       {
         "id": "prj-1",
@@ -52,7 +50,6 @@
   {
     "key": "experience",
     "label": "Experience",
-    "icon": "💼",
     "items": [
       {
         "id": "exp-1",
@@ -71,7 +68,6 @@
   {
     "key": "milestones",
     "label": "Milestones",
-    "icon": "🏁",
     "items": [
       {
         "id": "mile-1",
