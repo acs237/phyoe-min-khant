@@ -3,6 +3,7 @@ import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 
 import personalJourney from "../assets/content/personal-journey.json";
+import { useNavigate } from "react-router-dom";
 /**
  * PersonalJourneyPage
  * - SPA-friendly page for a personal portfolio
@@ -16,8 +17,6 @@ export default function PersonalJourneyPage() {
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `key`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
-
-
   const topics = personalJourney;
 
   // Currently selected topic
@@ -49,8 +48,17 @@ export default function PersonalJourneyPage() {
   const isExpanded = (topicKey: string, id: string) =>
     expandedByTopic[topicKey]?.has(id);
 
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
+        {/* Back to Home */}
+        <button 
+        className="flex items-center gap-2 px-4 py-2 text-sky-900 rounded-lg hover:bg-sky-100"
+        onClick={() => navigate("/")}>
+            <span className="text-lg">‹</span>
+            <span>Back to Home</span>
+        </button>
       {/* Page container */}
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Title */}
@@ -108,7 +116,7 @@ export default function PersonalJourneyPage() {
                           <div className="text-lg font-semibold text-sky-900">
                             {item.title}
                           </div>
-                          <p className="mt-1 text-sm text-sky-600">Learn More</p>
+                          <p className="mt-1 text-sm text-sky-600">{item.date}</p>
                         </div>
                         <span
                           className={clsx(
@@ -129,6 +137,7 @@ export default function PersonalJourneyPage() {
                     {open && (
                       <div
                         id={`${item.id}-panel`}
+                        style = {{ whiteSpace: "pre-line" }}
                         className="mx-5 mb-5 mt-0 overflow-hidden rounded-xl border border-sky-100 bg-sky-50/60 p-4 text-sky-800"
                       >
                         {item.content}

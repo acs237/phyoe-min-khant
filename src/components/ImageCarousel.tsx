@@ -24,7 +24,7 @@ const ImageCarousel = ({ images }: { images: string[] }) =>{
         <img
             src={images[index]}
             alt={`Slide ${index + 1}`}
-            className="w-full h-64 object-cover rounded-xl shadow-md"
+            className="w-full h-full object-cover rounded-xl shadow-md"
         />
 
         {/* Next Button */}
