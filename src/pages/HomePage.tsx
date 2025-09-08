@@ -35,7 +35,7 @@ export default function Homepage() {
             
             {/* My Personal Journey */}
             <button 
-                onClick={() => navigate("/personal-journey")}
+                onClick={() => navigate("/pmk-personal-portfolio/personal-journey")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
                 {/* <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -46,7 +46,7 @@ export default function Homepage() {
 
             {/* My Vlog */}
             {/* <button 
-                onClick={() => navigate("/vlog")}
+                onClick={() => navigate("/pmk-personal-portfolio/vlog")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
                 <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -58,7 +58,7 @@ export default function Homepage() {
 
             {/* My Coaching Journey */}
             {/* <button 
-                onClick={() => navigate("/coaching")}
+                onClick={() => navigate("/pmk-personal-portfolio/coaching")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
                 <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -70,7 +70,7 @@ export default function Homepage() {
 
             {/* About Me */}
             {/* <button 
-                onClick={() => navigate("/about-me")}
+                onClick={() => navigate("/pmk-personal-portfolio/about-me")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
                 <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
