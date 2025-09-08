@@ -34,15 +34,13 @@ export default function Homepage() {
             <div className="grid grid-cols-1 gap-6 mt-16 place-items-center">
             
             {/* My Personal Journey */}
-            <button 
+            <a href="/pmk-personal-portfolio/personal-journey/" 
                 /* onClick={() => navigate("/pmk-personal-portfolio/personal-journey")} */
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-                {/* <div className="text-sky-600 text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                👤
-                </div> */}
+                
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Personal Journey</h3>
-            </button>
+            </a>
 
             {/* My Vlog */}
             {/* <button 
