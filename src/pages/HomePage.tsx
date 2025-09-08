@@ -34,7 +34,7 @@ export default function Homepage() {
             <div className="grid grid-cols-1 gap-6 mt-16 place-items-center">
             
             {/* My Personal Journey */}
-            <a href="/pmk-personal-portfolio/personal-journey/" 
+            <a href="personal-journey/" 
                 /* onClick={() => navigate("/pmk-personal-portfolio/personal-journey")} */
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
