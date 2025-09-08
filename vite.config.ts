@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
- base: "/pmk-personal-portfolio/",
+ base: "/pmk-personal-portfolio",
  plugins: [react(), tailwindcss()],
  preview: {
   port: 3000,
