@@ -1,9 +1,9 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import profileImg from "/images/profile-picture.png";
 
 export default function Homepage() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-sky-100 to-white flex flex-col items-center justify-center p-8">
@@ -34,13 +34,13 @@ export default function Homepage() {
             <div className="grid grid-cols-1 gap-6 mt-16 place-items-center">
             
             {/* My Personal Journey */}
-            <a href="/pmk-personal-portfolio/personal-journey/" 
-                /* onClick={() => navigate("/pmk-personal-portfolio/personal-journey")} */
+            <button 
+                onClick={() => navigate("/pmk-personal-portfolio/personal-journey")}
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
                 
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Personal Journey</h3>
-            </a>
+            </button>
 
             {/* My Vlog */}
             {/* <button 
