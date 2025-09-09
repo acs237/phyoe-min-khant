@@ -3,6 +3,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
- base: "/pmk-personal-portfolio/",
+ base: "/phyoe-min-khant/",
  plugins: [react(), tailwindcss()],
 });
