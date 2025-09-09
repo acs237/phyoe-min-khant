@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import profileImg from "/images/profile-picture.png";
+import ContactMe from "../components/ContactMe";
 
 export default function Homepage() {
 
@@ -77,7 +78,9 @@ export default function Homepage() {
             </button> */}
             </div>
         </div>
-
+        
+        {/* Footer Section */}
+        <ContactMe />
         </div>
     );
 }
