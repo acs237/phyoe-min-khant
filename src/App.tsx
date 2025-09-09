@@ -6,7 +6,7 @@ import PersonalJourneyPage from './pages/PersonalJourney';
 
 function App() {
   return (
-    <Router basename='/phyoe-min-khant'>
+    <Router>
       
     <Routes>
       <Route path='/' element={<HomePage />} />
