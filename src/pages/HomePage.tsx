@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import profileImg from "/images/profile-picture.png";
+import profileImg from "/images/profile.JPG";
 import ContactMe from "../components/ContactMe";
 
 export default function Homepage() {
