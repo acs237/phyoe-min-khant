@@ -64,7 +64,7 @@ export default function PersonalJourneyPage() {
         {/* Title */}
         <header className="mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">
-            My Personal Journey
+            My Writing
           </h1>
           <div className="mt-2 h-1 w-36 rounded-full bg-sky-300" />
         </header>
@@ -112,12 +112,19 @@ export default function PersonalJourneyPage() {
                       aria-controls={`${item.id}-panel`}
                     >
                       <div className="flex items-start justify-between gap-3">
-                        <div>
+                        <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
                           <div className="text-lg font-semibold text-sky-900">
                             {item.title}
                           </div>
-                          <p className="mt-1 text-sm text-sky-600">{item.date}</p>
+                          <div className="text-lg font-semibold text-sky-900">
+                            {item.subtitle}
+                          </div>
                         </div>
+                        <div className="flex flex-col items-end">
+                          <p className="mt-1 text-sm text-sky-600">{item.date}</p>    
+                        </div>
+                                            
+                        
                         <span
                           className={clsx(
                             "mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border",
