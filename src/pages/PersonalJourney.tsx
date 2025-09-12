@@ -112,16 +112,16 @@ export default function PersonalJourneyPage() {
                       aria-controls={`${item.id}-panel`}
                     >
                       <div className="flex items-start justify-between gap-3">
-                        <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
-                          <div className="text-lg font-semibold text-sky-900">
-                            {item.title}
+                        <div>
+                          <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
+                            <div className="text-lg font-semibold text-sky-900">
+                              {item.title}
+                            </div>
+                            <div className="text-lg font-semibold text-sky-900">
+                              {item.subtitle}
+                            </div>
                           </div>
-                          <div className="text-lg font-semibold text-sky-900">
-                            {item.subtitle}
-                          </div>
-                        </div>
-                        <div className="flex flex-col items-end">
-                          <p className="mt-1 text-sm text-sky-600">{item.date}</p>    
+                          <p className="mt-1 text-sm text-sky-600">{item.date}</p>
                         </div>
                                             
                         
