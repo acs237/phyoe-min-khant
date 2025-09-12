@@ -48,30 +48,16 @@
     ]
   },
   {
-    "key": "projects",
-    "label": "Projects",
+    "key": "Table Tennis",
+    "label": "ကျွန်တော်နှင့် စားပွဲတင်တင်းနစ်",
     "items": [
       {
-        "id": "prj-1",
+        "id": "Tt-1",
         "title": "RC Column Parametric Study",
         "date": "2025 May 31",
         "content": "8-storey mid-column model; sustained/short-term load ratios; λ up to 120; MATLAB parametric sweeps & code-to-code validation.",
         "images": ["images/venice.jpeg", "images/venice.jpeg", "images/venice.jpeg"]
-      },
-      {
-        "id": "prj-2",
-        "title": "OS/161 Kernel Exercises",
-        "date": "2025 May 31",
-        "content": "Threading, semaphores/locks/CVs; TLB handling; two-level page tables; Banker's algorithm experiments.",
-        "images": ["images/venice.jpeg", "images/venice.jpeg", "images/venice.jpeg"]
-      },
-      {
-        "id": "prj-3",
-        "title": "WSUD Stormwater Reuse (CVEN9000)",
-        "date": "2025 May 31",
-        "content": "Group report: catchment modeling (ARR), tank sizing, water quality management, and reuse strategy.",
-        "images": ["venice", "venice", "venice"]
-      }
+      },      
     ]
   },
   {
