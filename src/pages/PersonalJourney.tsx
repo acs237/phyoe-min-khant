@@ -62,11 +62,10 @@ export default function PersonalJourneyPage() {
       {/* Page container */}
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Title */}
-        <header className="mb-8">
+        <header className="text-center mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">
             My Writing
           </h1>
-          <div className="mt-2 h-1 w-36 rounded-full bg-sky-300" />
         </header>
 
         {/* Two-column layout */}

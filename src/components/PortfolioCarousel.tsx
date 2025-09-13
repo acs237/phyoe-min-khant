@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import PortfolioCard from './PortfolioCard';
 import { portfolios, type PortfolioCardProps } from '../assets/content/portfolio';
-import './style.css'
+import './portfolio-card-style.css'
 
 const PortfolioCarousel = () => {
   return (
@@ -13,7 +13,7 @@ const PortfolioCarousel = () => {
         centeredSlides={true}
         navigation={true}
         slidesPerView={'auto'}
-        // loop={true}
+        loop={true}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,

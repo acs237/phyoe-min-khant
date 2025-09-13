@@ -23,7 +23,7 @@ export default function Homepage() {
             </div>
 
             <div className="text-sky-700 text-lg mb-16">
-                <p className="text-sky-600 text-md">"There is no missed opportunity. In this world, there is always a golden seat that belongs to you, which can be earned."</p>
+                <p className="text-sky-900 text-md">"There is no missed opportunity. In this world, there is always a golden seat that belongs to you, which can be earned."</p>
                 <div className="mt-8 w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
             </div>
 
