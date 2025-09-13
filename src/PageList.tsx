@@ -1,15 +1,17 @@
 import { Routes, Route } from 'react-router';
 import HomePage from './pages/HomePage';
 import PersonalJourneyPage from './pages/PersonalJourney';
+import Portfolio from './pages/Portfolio';
 
 const PageList = () => {
     return (
         <Routes>
-            <Route path='/pmk-personal-portfolio' element={<HomePage />} />
-            <Route path='/pmk-personal-portfolio/personal-journey' element={<PersonalJourneyPage />} />
-            <Route path='/pmk-personal-portfolio/vlog' element={<div>Vlog Page</div>} />
-            <Route path='/pmk-personal-portfolio/coaching' element={<div>Coaching Page</div>} />
-            <Route path='/pmk-personal-portfolio/about-me' element={<div>About Me Page</div>} />
+            <Route path='/' element={<HomePage />} />
+            <Route path='/personal-journey' element={<PersonalJourneyPage />} />
+            <Route path='/portfolio' element={<Portfolio />} />
+            <Route path='/vlog' element={<div>Vlog Page</div>} />
+            <Route path='/coaching' element={<div>Coaching Page</div>} />
+            <Route path='/about-me' element={<div>About Me Page</div>} />
         </Routes>
     )
 };

@@ -29,8 +29,8 @@ export default function Homepage() {
 
             {/* Navigation Buttons */}
             {/* TODO: use this when there's more items*/}
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 place-items-center"> */}
-            <div className="grid grid-cols-1 gap-6 mt-16 place-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 place-items-center">
+            {/* <div className="grid grid-cols-1 gap-6 mt-16 place-items-center"> */}
             
             {/* My Writing */}
             <Link 
@@ -39,6 +39,15 @@ export default function Homepage() {
             >
                 
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Writing</h3>
+            </Link>
+
+            {/* My Portfolio */}
+            <Link 
+                to="/portfolio"
+                className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+                
+                <h3 className="text-xl font-semibold text-sky-900 mb-2">My Portfolio</h3>
             </Link>
 
             {/* My Vlog */}
