@@ -14,32 +14,6 @@ const Portfolio = () => {
             height: "45rem",
         }}
         >
-            {/* <Grid size={12} textAlign="center" sx={{paddingTop: "2rem"}}>
-                <Typography onClick={() => setEventState("past")}
-                sx={{
-                    display: "inline",
-                    color: eventState == "past" ? "green" : "black",
-                    cursor: "pointer",
-                    borderBottom: eventState == "past" ? "2px solid green" : "none",
-                    opacity: "1",
-                    fontSize: {xs: "1.2rem", sm: "1.3rem", md:"1.5rem"}
-                }}
-                >
-                    Past Events
-                </Typography>
-                <Typography onClick={() => setEventState("upcoming")}
-                sx={{
-                    display: "inline",
-                    marginLeft: "4rem",
-                    cursor: "pointer",
-                    color: eventState == "upcoming" ? "green" : "black",
-                    borderBottom: eventState == "upcoming" ? "2px solid green" : "none",
-                    fontSize: {xs: "1.2rem", sm: "1.3rem", md:"1.5rem"}
-                }}
-                >
-                    Upcoming Events
-                </Typography>
-            </Grid> */}
             {/* Back to Home */}
             <button 
             className="flex items-center gap-2 px-4 py-2 text-sky-900 rounded-lg hover:bg-sky-100"
@@ -53,6 +27,10 @@ const Portfolio = () => {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">
                     My Portfolio
                 </h1>
+
+                <p className="mt-4 text-lg text-sky-900">
+                    A collection of my architectural works and designs.
+                </p>
             </header>
 
             {/* Carousel */}

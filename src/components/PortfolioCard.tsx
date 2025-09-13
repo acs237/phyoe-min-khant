@@ -11,12 +11,15 @@ const PortfolioCard: React.FC<PortfolioCardProps> = (portfolio) => {
           <p>Location: <span className="font-medium">{portfolio.address}</span></p>
         </div>
       </div>
-      
+    
     <img
         src={portfolio.image}
         alt={portfolio.title}
-        className="w-full h-full object-cover"
+        className="w-full h-60 object-cover"
     />
+
+    <p className="text-xs text-gray-500 italic">{portfolio.copyright}</p>
+    
     </div>
   );
 }
