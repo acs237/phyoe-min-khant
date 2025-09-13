@@ -4,6 +4,7 @@ import ImageCarousel from "../components/ImageCarousel";
 
 import writing from "../assets/content/writing.json";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 /**
  * PersonalJourneyPage
  * - SPA-friendly page for a personal portfolio
@@ -48,17 +49,12 @@ export default function Writing() {
   const isExpanded = (topicKey: string, id: string) =>
     expandedByTopic[topicKey]?.has(id);
 
-  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
-        {/* Back to Home */}
-        <button 
-        className="flex items-center gap-2 px-4 py-2 text-sky-900 rounded-lg hover:bg-sky-100"
-        onClick={() => navigate("/")}>
-            <span className="text-lg">‹</span>
-            <span>Back to Home</span>
-        </button>
+      {/* Nav Bar */}
+      <NavBar />
+      
       {/* Page container */}
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Title */}

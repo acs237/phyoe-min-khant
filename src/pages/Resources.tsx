@@ -12,6 +12,7 @@ import {
 import { documents, type Doc, type ExpandedSections } from '../assets/content/resource.ts';
 import { NavigationItem, SidebarSection } from '../components/ResourceComponents.tsx';
 import { useNavigate } from "react-router-dom";
+import NavBar from '../components/NavBar.tsx';
 
 
 const Resources: React.FC = () => {
@@ -30,17 +31,11 @@ const Resources: React.FC = () => {
     setSelectedDocument(doc);
   };
 
-  const navigate = useNavigate();
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-sky-50 to-white'>
-        {/* Back to Home */}
-        <button 
-        className="flex items-center gap-2 px-4 py-2 text-sky-900 rounded-lg hover:bg-sky-100"
-        onClick={() => navigate("/")}>
-            <span className="text-lg">‹</span>
-            <span>Back to Home</span>
-        </button>
+        {/* Nav Bar */}
+        <NavBar />
 
         <div className="flex">
           {/* Sidebar */}

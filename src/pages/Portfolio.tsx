@@ -1,29 +1,24 @@
 import Grid from '@mui/material/Grid';
 import PortfolioCarousel from '../components/PortfolioCarousel';
 import { useNavigate } from "react-router-dom";
+import NavBar from '../components/NavBar';
 
 
 const Portfolio = () => {
     // const [eventState, setEventState] = useState("past");
-    const navigate = useNavigate();
 
     return (
         <Grid
         sx={{
-            backgroundColor: "#d8edffff",
+            backgroundColor: "#f1f9ffff",
             height: "45rem",
         }}
         >
-            {/* Back to Home */}
-            <button 
-            className="flex items-center gap-2 px-4 py-2 text-sky-900 rounded-lg hover:bg-sky-100"
-            onClick={() => navigate("/")}>
-                <span className="text-lg">‹</span>
-                <span>Back to Home</span>
-            </button>
+            {/* Nav Bar */}
+            <NavBar />
 
             {/* Title */}
-            <header className="text-center">
+            <header className="text-center mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">
                     My Portfolio
                 </h1>
