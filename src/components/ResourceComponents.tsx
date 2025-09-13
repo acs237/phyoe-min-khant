@@ -9,7 +9,7 @@ export const DocumentItem: React.FC<{
   <div
     className={`p-3 rounded-lg cursor-pointer transition-all duration-200 border-l-4 ${
       selectedDocument?.id === doc.id
-        ? 'bg-blue-50 border-l-blue-500 shadow-sm'
+        ? 'bg-blue-50 border-l-blue-200 shadow-sm'
         : 'bg-white border-l-gray-200 hover:bg-gray-50 hover:border-l-gray-300'
     }`}
     onClick={() => onSelect(doc)}

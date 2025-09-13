@@ -29,18 +29,17 @@ const Resources: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-100 to-white">
       {/* Sidebar */}
       <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
         {/* Header */}
         <div className="p-4 border-b border-gray-200">
           <div className="flex items-center space-x-3 mb-4">
-            <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
+            {/* <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
               <span className="text-white text-sm font-bold">COMP</span>
-            </div>
+            </div> */}
             <div>
-              <h1 className="text-lg font-bold text-gray-900">COMP3431</h1>
-              <p className="text-sm text-gray-600">25T3</p>
+              <h1 className="sm:text-xl md:text-4xl font-extrabold text-sky-900 tracking-tight font-bold text-gray-900">My Resources</h1>
             </div>
           </div>
 
@@ -112,20 +111,21 @@ const Resources: React.FC = () => {
                   <a
                     href={selectedDocument.url}
                     download={selectedDocument.filename}
-                    className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    
+                    className="flex items-center bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                     rel="noreferrer"
                   >
-                    <Download className="h-4 w-4" />
-                    <span>Download</span>
+                    <Download className="text-l text-sky-900 m-2" />
+                    <span className='text-l text-sky-900 m-2'>Download</span>
                   </a>
                   <a
                     href={selectedDocument.url}
                     target="_blank"
-                    className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="h-4 w-4" />
-                    <span>View in browser</span>
+                    <ExternalLink className="text-l text-sky-900 m-2" />
+                    <span className='text-l text-sky-900 m-2'>View in browser</span>
                   </a>
                 </div>
               </div>
