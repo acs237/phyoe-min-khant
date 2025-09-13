@@ -49,12 +49,12 @@ const Portfolio = () => {
             </button>
 
             {/* Title */}
-            <header className="mb-8 text-center mt-4">
+            <header className="text-center">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">
                     My Portfolio
                 </h1>
             </header>
-            
+
             {/* Carousel */}
             <PortfolioCarousel />
         </Grid>
