@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router';
 import HomePage from './pages/HomePage';
-import PersonalJourneyPage from './pages/PersonalJourney';
+import Writing from './pages/Writing';
 import Portfolio from './pages/Portfolio';
 
 const PageList = () => {
     return (
         <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/personal-journey' element={<PersonalJourneyPage />} />
+            <Route path='/writing' element={<Writing />} />
             <Route path='/portfolio' element={<Portfolio />} />
             <Route path='/vlog' element={<div>Vlog Page</div>} />
             <Route path='/coaching' element={<div>Coaching Page</div>} />

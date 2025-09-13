@@ -32,7 +32,7 @@ export default function Homepage() {
             
             {/* My Writing */}
             <Link 
-                to="/personal-journey"
+                to="/writing"
                 className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
                 

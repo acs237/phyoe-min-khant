@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 
-import personalJourney from "../assets/content/personal-journey.json";
+import writing from "../assets/content/writing.json";
 import { useNavigate } from "react-router-dom";
 /**
  * PersonalJourneyPage
@@ -13,11 +13,11 @@ import { useNavigate } from "react-router-dom";
  *
  * Styling: TailwindCSS
  */
-export default function PersonalJourneyPage() {
+export default function Writing() {
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `key`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
-  const topics = personalJourney;
+  const topics = writing;
 
   // Currently selected topic
   const [selectedKey, setSelectedKey] = useState(topics[0].key);
