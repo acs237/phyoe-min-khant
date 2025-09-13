@@ -48,6 +48,15 @@ export default function Homepage() {
                 <h3 className="text-xl font-semibold text-sky-900 mb-2">My Portfolio</h3>
             </Link>
 
+            {/* My Resources */}
+            <Link 
+                to="/resources"
+                className="group bg-white hover:bg-sky-50 border-2 border-sky-200 hover:border-sky-400 rounded-xl p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+                
+                <h3 className="text-xl font-semibold text-sky-900 mb-2">My Resources</h3>
+            </Link>
+
             {/* My Vlog */}
             {/* <button 
                 onClick={() => navigate("/pmk-personal-portfolio/vlog")}
