@@ -10,7 +10,7 @@ export default function Homepage() {
         <NavBar />
 
         {/* Main Content Container */}
-        <div className="flex grid grid-rows-3 max-w-5xl w-full justify-center p-10">
+        <div className="flex grid grid-rows-3 justify-center p-10">
             
             {/* Title Section */}
             <div className="mb-12 grid grid-cols-2 items-center gap-8">

@@ -4,7 +4,7 @@ export default function ContactMe() {
     <div className="flex grid grid-cols-2 mt-10 justify-center gap-2">
       {/* Facebook */}
         <a href="https://www.facebook.com/phyoe.min.khant.969757"
-            className="p-2 w-10 h-10 rounded-lg flex items-center border-2 border-sky-200 hover:border-sky-400 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100">
+            className="p-2 w-15 h-15 rounded-lg flex items-center border-2 border-sky-200 hover:border-sky-400 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 71 72"
             fill="none">
             <path
@@ -15,7 +15,7 @@ export default function ContactMe() {
 
       {/* LinkedIn */}
         <a href="https://www.linkedin.com/in/phyoe-min-khant"
-        className="p-2 w-10 h-10 rounded-lg flex items-center border-2 border-sky-200 hover:border-sky-400 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100">
+        className="p-2 w-15 h-15 rounded-lg flex items-center border-2 border-sky-200 hover:border-sky-400 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72"
         fill="none">
         <path

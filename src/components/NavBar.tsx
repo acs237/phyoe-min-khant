@@ -5,9 +5,9 @@ const NavBar = () => {
 
   const tabs = [
     { name: 'Home', path: '/' },
-    { name: 'My Writing', path: '/writing' },
-    { name: 'My Portfolio', path: '/portfolio' },
-    { name: 'My Resources', path: '/resources' }
+    { name: 'Writings', path: '/writing' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Resources', path: '/resources' }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -21,7 +21,7 @@ const NavBar = () => {
               key={tab.name}
               to={tab.path}
               className={`
-                px-8 py-3 rounded-lg font-medium text-lg transition-all duration-300 ease-in-out inline-block
+                px-2 md:px-8 md:py-3 rounded-lg text-md transition-all duration-300 ease-in-out inline-block
                 ${
                   isActive(tab.path)
                     ? 'bg-white text-sky-900 shadow-md border border-blue-200 transform scale-105'

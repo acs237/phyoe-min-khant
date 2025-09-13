@@ -29,7 +29,7 @@ const PortfolioCarousel = () => {
       >
         
         {portfolios.slice(0, 6).reverse().map((portfolio: PortfolioCardProps) => (  // Always ensures six cards are displayed
-            <SwiperSlide style={{ width: "300px", height: "500px"  }}>
+            <SwiperSlide style={{ width: "300px", height: "450px"  }}>
                 <PortfolioCard {...portfolio} />
             </SwiperSlide>
         ))}
