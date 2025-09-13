@@ -21,7 +21,7 @@ const PortfolioCarousel = () => {
           modifier: 2.5,
           slideShadows: true,
         }}
-        keyboard={{ enabled: true }}
+        keyboard
         pagination={true}
         modules={[EffectCoverflow, Pagination, Navigation, Keyboard]}
         className="mySwiper"
