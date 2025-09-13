@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Pagination, Navigation, Keyboard } from 'swiper/modules';
 import PortfolioCard from './PortfolioCard';
 import { portfolios, type PortfolioCardProps } from '../assets/content/portfolio';
 import './portfolio-card-style.css'
@@ -21,8 +21,9 @@ const PortfolioCarousel = () => {
           modifier: 2.5,
           slideShadows: true,
         }}
+        keyboard={{ enabled: true }}
         pagination={true}
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[EffectCoverflow, Pagination, Navigation, Keyboard]}
         className="mySwiper"
       >
         
