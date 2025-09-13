@@ -18,7 +18,7 @@ export default function Homepage() {
                 <img
                     src={profileImg}
                     alt="My profile"
-                    className="w-48 h-48 rounded-full shadow-lg mx-auto"
+                    className="w-35 h-35 md:w-55 md:h-55 rounded-full shadow-lg mx-auto"
                 />
             </div>
 
