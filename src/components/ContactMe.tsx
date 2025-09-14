@@ -1,7 +1,7 @@
 
 export default function ContactMe() {
   return (
-    <div className="flex grid grid-cols-2 mt-10 justify-center gap-2">
+    <div className="flex grid grid-cols-2 justify-center gap-2">
       {/* Facebook */}
         <a href="https://www.facebook.com/phyoe.min.khant.969757"
             className="p-2 w-15 h-15 rounded-lg flex items-center border-2 border-sky-200 hover:border-sky-400 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100">
