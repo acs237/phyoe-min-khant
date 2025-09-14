@@ -11,11 +11,10 @@ import {
 } from 'lucide-react';
 import { documents, type Doc, type ExpandedSections } from '../assets/content/resource.ts';
 import { NavigationItem, SidebarSection } from '../components/ResourceComponents.tsx';
-import { useNavigate } from "react-router-dom";
 import NavBar from '../components/NavBar.tsx';
 
 
-const Resources: React.FC = () => {
+const Notes: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Doc | null>(null);
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
     courseWork: true,
@@ -167,4 +166,4 @@ const Resources: React.FC = () => {
   );
 };
 
-export default Resources;
+export default Notes;

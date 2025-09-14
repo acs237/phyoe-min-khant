@@ -13,7 +13,6 @@ const PortfolioCarousel = () => {
         centeredSlides={true}
         navigation={true}
         slidesPerView={'auto'}
-        loop={true}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -22,7 +21,7 @@ const PortfolioCarousel = () => {
           slideShadows: true,
         }}
         mousewheel={true}
-        keyboard
+        keyboard={{enabled: true}}
         pagination={true}
         modules={[EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel]}
         className="mySwiper"

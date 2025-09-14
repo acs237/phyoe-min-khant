@@ -3,7 +3,6 @@ import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 
 import writing from "../assets/content/writing.json";
-import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 /**
  * PersonalJourneyPage
@@ -14,7 +13,7 @@ import NavBar from "../components/NavBar";
  *
  * Styling: TailwindCSS
  */
-export default function Writing() {
+export default function Thoughts() {
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `key`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
@@ -60,7 +59,7 @@ export default function Writing() {
         {/* Title */}
         <header className="text-center mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">
-            My Writing
+            My Thoughts
           </h1>
         </header>
 

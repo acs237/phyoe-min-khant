@@ -3,7 +3,7 @@ import PortfolioCarousel from '../components/PortfolioCarousel';
 import NavBar from '../components/NavBar';
 
 
-const Portfolio = () => {
+const Buildings = () => {
     // const [eventState, setEventState] = useState("past");
 
     return (
@@ -33,4 +33,4 @@ const Portfolio = () => {
     )
 }
 
-export default Portfolio;
+export default Buildings;

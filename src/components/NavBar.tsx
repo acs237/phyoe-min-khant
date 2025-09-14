@@ -5,9 +5,9 @@ const NavBar = () => {
 
   const tabs = [
     { name: 'Home', path: '/' },
-    { name: 'Writings', path: '/writing' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Resources', path: '/resources' }
+    { name: 'Thoughts', path: '/thoughts' },
+    { name: 'Buildings', path: '/buildings' },
+    { name: 'Notes', path: '/notes' }
   ];
 
   const isActive = (path: string) => location.pathname === path;

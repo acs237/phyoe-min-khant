@@ -7,7 +7,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = (portfolio) => {
       <div className="p-4">
         <h2 className="text-2xl text-sky-900 text-center">{portfolio.title}</h2>
         <div className="mt-3 space-y-1 text-sm text-black">
-          <p>Date: <span className="font-medium">{portfolio.date}</span></p>
+          <p>Year: <span className="font-medium">{portfolio.year}</span></p>
           <p>Location: <span className="font-medium">{portfolio.address}</span></p>
         </div>
       </div>
