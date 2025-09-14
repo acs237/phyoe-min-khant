@@ -8,7 +8,7 @@ export default function Values() {
   ];
 
   return (
-    <section className="py-10 bg-neutral-50">
+    <section className="py-10 bg-neutral-50 rounded-2xl">
       <h2 className="text-3xl font-semibold text-center mb-10 text-sky-900">
         My Values
       </h2>

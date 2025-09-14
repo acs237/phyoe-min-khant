@@ -38,7 +38,6 @@ export default function Homepage() {
                 />
                 <DownloadCV cvUrl="resource/file1.pdf" />
             </div>
-            <Values />
 
             <div className="border-2 border-sky-200 rounded-2xl bg-white/70 p-6 mb-12 shadow-lg">
                 <h1 className="flex justify-center text-2xl font-bold text-sky-900 mb-4 tracking-tight">Insights from My Journey</h1>
@@ -47,6 +46,9 @@ export default function Homepage() {
                 <div className="mt-10 w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
                 
             </div>
+
+            <Values />
+            
             <div className="flex justify-center">
                 <ContactMe />
             </div>
