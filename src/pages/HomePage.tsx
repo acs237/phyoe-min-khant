@@ -3,6 +3,7 @@ import ContactMe from "../components/ContactMe";
 import NavBar from "../components/NavBar";
 import RotatingText from "../components/RotatingText";
 import DownloadCV from "../components/DownloadCV";
+import Values from "../components/Values";
 
 export default function Homepage() {
 
@@ -16,12 +17,12 @@ export default function Homepage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-sky-100 to-white ">
+        <div className="bg-gradient-to-br from-sky-100 to-white ">
         {/* Nav Bar */}
         <NavBar />
 
         {/* Main Content Container */}
-        <div className="flex grid grid-rows-3 justify-center p-10">
+        <div className="flex grid grid-rows-3 justify-center p-10 ">
             
             {/* Title Section */}
             <div className="mb-12 grid grid-cols-2 items-center gap-8">
@@ -37,6 +38,7 @@ export default function Homepage() {
                 />
                 <DownloadCV cvUrl="resource/file1.pdf" />
             </div>
+            <Values />
 
             <div className="border-2 border-sky-200 rounded-2xl bg-white/70 p-6 mb-12 shadow-lg">
                 <h1 className="flex justify-center text-2xl font-bold text-sky-900 mb-4 tracking-tight">Insights from My Journey</h1>
