@@ -25,8 +25,7 @@ export const DocumentItem: React.FC<{
       </div>
       <div className="flex-1 min-w-0">
         <h4 className="text-sm font-medium text-gray-900 truncate">{doc.title}</h4>
-        <p className="text-xs text-gray-600 mt-1">{doc.subtitle}</p>
-        <p className="text-xs text-gray-500 mt-1">Created {doc.created}</p>
+        
       </div>
     </div>
   </div>
@@ -49,8 +48,10 @@ export const SidebarSection: React.FC<{
       type="button"
     >
       <div className="flex items-center space-x-2">
-        <Icon className="h-4 w-4" />
-        <span>{title}</span>
+        <span className="w-4 h-4 flex items-center justify-center text-gray-600">
+          <Icon />
+        </span>
+        <span className="text-left">{title}</span>
       </div>
       {expandedSections[sectionKey] ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
     </button>
