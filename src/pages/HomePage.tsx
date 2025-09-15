@@ -12,8 +12,8 @@ export default function Homepage() {
         '\"Everything has two sides: good and bad. \nEveryone has two faces: good and evil. Try to see the good side. \nEvery decision has pros and cons. Choose the one with less cons.\"',
         '\"You must be honest to those who you think are the most important. \nYou will never get true friends if you\'re dishonest.\"',
         '\"When you are over confident, look at someone from a superior position. \nWhen you are desperate, look at someone from an inferior position.\"',
-        '\"There is no shortcut to success. You will get there only after a series of failures which you can overcome with resilience and a mind of never giving up or perseverance.\"',
-        '\"There is no missed opportunity. In this world, there is always a golden seat that belongs to you, which can be earned.\"'
+        '\"There is no shortcut to success. \nYou will get there only after a series of failures which you can overcome with resilience and perseverance.\"',
+        '\"There is no missed opportunity. \nIn this world, there is always a golden seat that belongs to you, which can be earned.\"'
     ];
 
     return (
