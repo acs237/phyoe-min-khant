@@ -1,8 +1,8 @@
-import { Heart, Handshake, Users } from "lucide-react";
+import { Scale, Handshake, Users } from "lucide-react";
 
 export default function Values() {
   const values = [
-    { icon: <Heart className="w-10 h-10 text-sky-600" />, label: "Honesty" },
+    { icon: <Scale className="w-10 h-10 text-sky-600" />, label: "Honesty" },
     { icon: <Handshake className="w-10 h-10 text-sky-600" />, label: "Gratitude" },
     { icon: <Users className="w-10 h-10 text-sky-600" />, label: "Teamwork" },
   ];

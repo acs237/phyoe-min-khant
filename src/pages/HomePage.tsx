@@ -8,12 +8,12 @@ import Values from "../components/Values";
 export default function Homepage() {
 
     const sentences=[
-        'Don\'t be afraid to make a mistake but don\'t make the same mistake twice.',
-        'Everything has two sides: good and bad. \nEveryone has two faces: good and evil. Try to see the good face. \nEvery decision has pros and cons. Choose the one with less cons.',
-        'You must be honest to those who you think are the most important. \nYou will never get true friends if you\'re dishonest.',
-        'When you are over confident, look at someone from a superior position. \nWhen you are desperate, look at someone from an inferior position.',
-        'There is no shortcut to success. You will get there only after a series of failures which you can overcome with resilience and a mind of never giving up or perseverance.',
-        'There is no missed opportunity. In this world, there is always a golden seat that belongs to you, which can be earned.'
+        '\"Don\'t be afraid to make a mistake but don\'t make the same mistake twice.\"',
+        '\"Everything has two sides: good and bad. \nEveryone has two faces: good and evil. Try to see the good side. \nEvery decision has pros and cons. Choose the one with less cons.\"',
+        '\"You must be honest to those who you think are the most important. \nYou will never get true friends if you\'re dishonest.\"',
+        '\"When you are over confident, look at someone from a superior position. \nWhen you are desperate, look at someone from an inferior position.\"',
+        '\"There is no shortcut to success. You will get there only after a series of failures which you can overcome with resilience and a mind of never giving up or perseverance.\"',
+        '\"There is no missed opportunity. In this world, there is always a golden seat that belongs to you, which can be earned.\"'
     ];
 
     return (
@@ -36,11 +36,11 @@ export default function Homepage() {
                     alt="My profile"
                     className="w-35 h-35 md:w-55 md:h-55 rounded-full shadow-lg mx-auto"
                 />
-                <DownloadCV cvUrl="resource/file1.pdf" />
+                <DownloadCV cvUrl="CV.pdf" />
             </div>
 
             <div className="border-2 border-sky-200 rounded-2xl bg-white/70 p-6 mb-12 shadow-lg">
-                <h1 className="flex justify-center text-2xl font-bold text-sky-900 mb-4 tracking-tight">Insights from My Journey</h1>
+                <h1 className="flex justify-center text-3xl font-semibold text-center mb-10 text-sky-900 mb-4 tracking-tight">Insights from My Journey</h1>
                 <RotatingText sentences={sentences}/>
             
                 <div className="mt-10 w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
