@@ -21,10 +21,10 @@ const DownloadCV: React.FC<DownloadCVProps> = ({ cvUrl, buttonText = "My CV" }) 
     <div className="">
       <button
         onClick={handleDownload}
-        className="flex items-center text-black font-semibold rounded-lg shadow-lg transition-all bg-white hover:bg-sky-50        border-2 border-sky-200 hover:border-sky-400 rounded-xl        transition-all duration-300 transform hover:scale-105          hover:shadow-xl"
+        className="flex items-center p-3 rounded-lg shadow-lg transition-all bg-white hover:bg-sky-50        border-2 border-sky-200 hover:border-sky-400 rounded-xl        transition-all duration-300 transform hover:scale-105          hover:shadow-xl"
       >
-        <FileText className="text-l text-sky-900 m-2" />
-        <span className='text-l text-sky-900 m-2'>{buttonText}</span>
+        <FileText size={40} className="m-2 text-sky-900" />
+        <span className='text-xl md:text-2xl lg:text-3xl font-semibold text-sky-900 m-2'>{buttonText}</span>
         
       </button>
     </div>

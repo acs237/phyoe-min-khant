@@ -9,7 +9,7 @@ import {
   MessageSquare,
   FolderOpen,
 } from 'lucide-react';
-import { documents, type Doc, type ExpandedSections } from '../assets/content/resource.ts';
+import { documents, type Doc, type ExpandedSections } from '../assets/content/notes.ts';
 import { NavigationItem, SidebarSection } from '../components/ResourceComponents.tsx';
 import NavBar from '../components/NavBar.tsx';
 
@@ -17,9 +17,15 @@ import NavBar from '../components/NavBar.tsx';
 const Notes: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Doc | null>(null);
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
-    courseWork: true,
-    lectures: true,
-    assignments: false,
+    mathematics1: false,
+    mathematics2: false,
+    mathematics3: false,
+    mathematics4: false,
+    mathematics5: false,
+    mathematics6: false,
+    mathematics7: false,
+    mathematics8: false,
+    structuralengineering: false,
   });
 
   const toggleSection = (section: keyof ExpandedSections) => {
@@ -35,22 +41,22 @@ const Notes: React.FC = () => {
     <div className='min-h-screen bg-gradient-to-b from-sky-50 to-white'>
         {/* Nav Bar */}
         <NavBar />
-
+        <div className='text-center mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-8'>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">My Notes</h1>
+        </div>
         <div className="flex">
           {/* Sidebar */}
-          <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
+          <div className="w-80 bg-white border-r border-gray-200 flex flex-col bg-gradient-to-b from-sky-50 to-white">
             {/* Header */}
-            <div className="p-4 border-b border-gray-200">
+            {/* <div className="p-4 border-b border-gray-200">
               <div className="flex items-center space-x-3 mb-4">
-                {/* <div className="w-12 h-12 bg-gray-800 rounded-lg flex        items-center justify-center">
+                <div className="w-12 h-12 bg-gray-800 rounded-lg flex        items-center justify-center">
                   <span className="text-white text-sm font-bold">COMP</span>
-                </div> */}
-                <div>
-                  <h1 className="sm:text-xl md:text-4xl font-extrabold text-sky-900          tracking-tight font-bold text-gray-900">My Resources</h1>
                 </div>
+                
               </div>
                   
-            </div>
+            </div> */}
                   
             {/* Navigation */}
             {/* <div className="p-4 space-y-2">
@@ -61,25 +67,14 @@ const Notes: React.FC = () => {
               <NavigationItem icon={Users} label="Groups" />
             </div> */}
       
-            {/* Course Work Section */}
+            {/* Mathematics Section */}
             <div className="px-4 pb-4 flex-1 overflow-y-auto">
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">Course Work</         h3>
+              <h3 className="text-center text-lg font-semibold text-gray-700 mb-3">Mathematics</h3>
               
               <SidebarSection
-                title="Lectures and Labs"
-                items={documents.lectures}
-                sectionKey="lectures"
-                icon={FileText}
-                expandedSections={expandedSections}
-                toggleSection={toggleSection}
-                onSelect={selectDocument}
-                selectedDocument={selectedDocument}
-              />
-      
-              <SidebarSection
-                title="Software and Robots"
-                items={documents.software}
-                sectionKey="courseWork"
+                title="2021 Entry Alge - Euclidiad"
+                items={documents.mathematics1}
+                sectionKey="mathematics1"
                 icon={FolderOpen}
                 expandedSections={expandedSections}
                 toggleSection={toggleSection}
@@ -88,10 +83,92 @@ const Notes: React.FC = () => {
               />
       
               <SidebarSection
-                title="Assignments/Projects"
-                items={documents.assignments}
-                sectionKey="assignments"
-                icon={FileText}
+                title="2021 Entry NT - Euclidiad"
+                items={documents.mathematics2}
+                sectionKey="mathematics2"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+
+              <SidebarSection
+                title="2022 Entry NT - Euclidiad"
+                items={documents.mathematics3}
+                sectionKey="mathematics3"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+
+              <SidebarSection
+                title="2023 Advanced NT - MSM IMO Training"
+                items={documents.mathematics4}
+                sectionKey="mathematics4"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+
+              <SidebarSection
+                title="2023 Entry NT - Euclidiad"
+                items={documents.mathematics5}
+                sectionKey="mathematics5"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+
+              <SidebarSection
+                title="2024 Advanced NT - MSM IMO Training"
+                items={documents.mathematics6}
+                sectionKey="mathematics6"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+
+              <SidebarSection
+                title="2024 Intermediate NT - MSM Senior 2 Training"
+                items={documents.mathematics7}
+                sectionKey="mathematics7"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+      
+              <SidebarSection
+                title="2025 Advanced NT - MSM IMO Training"
+                items={documents.mathematics8}
+                sectionKey="mathematics8"
+                icon={FolderOpen}
+                expandedSections={expandedSections}
+                toggleSection={toggleSection}
+                onSelect={selectDocument}
+                selectedDocument={selectedDocument}
+              />
+            </div>
+
+            {/* Structural Engineering Section */}
+            <div className="px-4 pb-4 flex-1 overflow-y-auto">
+              <h3 className="text-center text-lg font-semibold text-gray-700 mb-3">Structural Engineering</h3>
+              
+              <SidebarSection
+                title="Civil Engineering"
+                items={documents.structuralengineering}
+                sectionKey="structuralengineering"
+                icon={FolderOpen}
                 expandedSections={expandedSections}
                 toggleSection={toggleSection}
                 onSelect={selectDocument}

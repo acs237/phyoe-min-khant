@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronRight, FileText } from "lucide-react";
-import type { Doc, ExpandedSections } from "../assets/content/resource";
+import type { Doc, ExpandedSections } from "../assets/content/notes";
 
 export const DocumentItem: React.FC<{
   doc: Doc;

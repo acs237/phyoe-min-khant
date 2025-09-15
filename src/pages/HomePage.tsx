@@ -36,7 +36,9 @@ export default function Homepage() {
                     alt="My profile"
                     className="w-35 h-35 md:w-55 md:h-55 rounded-full shadow-lg mx-auto"
                 />
-                <DownloadCV cvUrl="CV.pdf" />
+                <div className="col-span-2">
+                    <DownloadCV cvUrl="CV.pdf" />
+                </div>
             </div>
 
             <div className="border-2 border-sky-200 rounded-2xl bg-white/70 p-6 mb-12 shadow-lg">
