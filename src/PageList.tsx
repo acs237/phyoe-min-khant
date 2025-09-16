@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import Thoughts from './pages/ThoughtsPage';
 import Buildings from './pages/BuildingsPage';
 import Notes from './pages/NotesPage';
+import ContactMe from './components/ContactMe';
 
 const PageList = () => {
     return (
@@ -11,6 +12,7 @@ const PageList = () => {
             <Route path='/thoughts' element={<Thoughts />} />
             <Route path='/buildings' element={<Buildings />} />
             <Route path='/notes' element={<Notes />} />
+            <Route path='/contact' element={<ContactMe />} />
             <Route path='/vlog' element={<div>Vlog Page</div>} />
             <Route path='/coaching' element={<div>Coaching Page</div>} />
             <Route path='/about-me' element={<div>About Me Page</div>} />

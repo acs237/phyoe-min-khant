@@ -1,5 +1,5 @@
 import profileImg from "/images/profile.JPG";
-import ContactMe from "../components/ContactMe";
+import ContactMe from "../components/Socials";
 import NavBar from "../components/NavBar";
 import RotatingText from "../components/RotatingText";
 import DownloadCV from "../components/DownloadCV";
