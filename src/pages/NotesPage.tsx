@@ -164,12 +164,12 @@ const Notes: React.FC = () => {
           >
             {sidebarOpen ? (
               <>
-                <ChevronRight className="w-6 h-6" />
+                <ChevronLeft className="w-6 h-6" />
                 <p>Close Sidebar</p>
               </>
             ) : (
               <>
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronRight className="w-6 h-6" />
                 <p>Open Sidebar</p>
               </>
             )}

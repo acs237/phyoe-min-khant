@@ -9,7 +9,7 @@ export default function ContactMe() {
     setResult("Sending....");
     const formData = new FormData(event.currentTarget);
 
-    formData.append("access_key", "4af72d6b-efd9-4705-b325-77f3b095df19");
+    formData.append("access_key", "43927954-781b-47fb-b26d-fb2eadd24d7c");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -37,6 +37,7 @@ export default function ContactMe() {
           </h2>
 
           <form onSubmit={onSubmit} className="space-y-4">
+            <input type="hidden" name="apikey" value="43927954-781b-47fb-b26d-fb2eadd24d7c"/>
             {/* Name */}
             <div className="flex items-center space-x-4">
               <label

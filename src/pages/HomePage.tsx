@@ -22,7 +22,7 @@ export default function Homepage() {
         <NavBar />
 
         {/* Main Content Container */}
-        <div className="flex grid grid-rows-3 justify-center p-10 ">
+        <div className="flex grid justify-center p-10 gap-12">
             
             {/* Title Section */}
             <div className="mb-12 grid grid-cols-2 items-center gap-8">
@@ -48,8 +48,10 @@ export default function Homepage() {
                 <div className="mt-10 w-24 h-1 bg-sky-500 mx-auto rounded-full"></div>
                 
             </div>
-
+            
             <Values />
+            
+            
             
             <div className="flex justify-center">
                 <ContactMe />

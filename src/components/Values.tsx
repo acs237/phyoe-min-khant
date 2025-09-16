@@ -8,7 +8,7 @@ export default function Values() {
   ];
 
   return (
-    <section className="py-10 bg-neutral-50 rounded-2xl">
+    <section className="py-6 bg-neutral-50 rounded-2xl">
       <h2 className="text-3xl font-semibold text-center mb-10 text-sky-900">
         My Values
       </h2>
@@ -18,10 +18,10 @@ export default function Values() {
             key={value.label}
             className="flex flex-col items-center text-center"
           >
-            <div className="w-20 h-20 flex items-center justify-center rounded-full border-2 border-sky-200 shadow-md bg-white">
+            <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center rounded-full border-2 border-sky-200 shadow-md bg-white">
               {value.icon}
             </div>
-            <p className="mt-4 text-lg font-medium text-sky-900">
+            <p className="mt-2 text-base font-medium text-sky-900 leading-tight">
               {value.label}
             </p>
           </div>
