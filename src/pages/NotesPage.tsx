@@ -5,6 +5,8 @@ import {
   ExternalLink,
   FolderOpen,
   ChevronLeft,
+  ChevronRight,
+  FolderClosed,
 } from "lucide-react";
 import {
   documents,
@@ -121,7 +123,7 @@ const Notes: React.FC = () => {
                   title={section.title}
                   items={section.item}
                   sectionKey={section.key as keyof ExpandedSections}
-                  icon={FolderOpen}
+                  icon={expandedSections[section.key as keyof ExpandedSections] ? FolderOpen : FolderClosed}
                   expandedSections={expandedSections}
                   toggleSection={toggleSection}
                   onSelect={selectDocument}
@@ -143,7 +145,7 @@ const Notes: React.FC = () => {
                 title="Civil Engineering"
                 items={documents.structuralengineering}
                 sectionKey="structuralengineering"
-                icon={FolderOpen}
+                icon={expandedSections["structuralengineering"] ? FolderOpen : FolderClosed}
                 expandedSections={expandedSections}
                 toggleSection={toggleSection}
                 onSelect={selectDocument}
@@ -160,8 +162,18 @@ const Notes: React.FC = () => {
             className="md:hidden text-sky-900 inline-flex items-center space-x-2 border-2 border-sky-200 bg-white hover:bg-sky-50 rounded-xl m-4 px-3 py-2 shadow-md"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
-            <ChevronLeft className="w-6 h-6" />
-            <p>Toggle Sidebar</p>
+            {sidebarOpen ? (
+              <>
+                <ChevronRight className="w-6 h-6" />
+                <p>Close Sidebar</p>
+              </>
+            ) : (
+              <>
+                <ChevronLeft className="w-6 h-6" />
+                <p>Open Sidebar</p>
+              </>
+            )}
+            
           </button>
           {selectedDocument ? (
             <>
@@ -207,9 +219,13 @@ const Notes: React.FC = () => {
                 <div className="bg-white rounded-lg shadow-lg relative w-full h-full">
                   <iframe
                     src={selectedDocument.url}
-                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                    className="hidden md:block absolute top-0 left-0 w-full h-full rounded-lg"
                     title={selectedDocument.title}
                   />
+                  {/* Optional fallback text for mobile */}
+    <div className="md:hidden flex items-center justify-center h-full text-gray-500">
+      Document preview available on larger screens
+    </div>
                 </div>
               </div>
             </>
