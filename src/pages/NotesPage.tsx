@@ -133,16 +133,16 @@ const Notes: React.FC = () => {
             </div>
           </div>
 
-          {/* Structural Engineering Section */}
+          {/* Civil Engineering Section */}
           <div className=" px-4 pb-4 flex-1 flex flex-col overflow-y-auto">
             <h3 className="text-center text-2xl font-bold text-gray-700 mb-3 shrink-0">
-              Structural Engineering
+              Civil Engineering
             </h3>
 
             {/* Scrollable folder list */}
             <div className="flex-1 overflow-y-auto">
               <SidebarSection
-                title="Civil Engineering"
+                title="Structural Engineering"
                 items={documents.structuralengineering}
                 sectionKey="structuralengineering"
                 icon={expandedSections["structuralengineering"] ? FolderOpen : FolderClosed}
