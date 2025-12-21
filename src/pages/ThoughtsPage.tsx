@@ -3,7 +3,14 @@ import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
 import NavBar from "../components/NavBar";
 
-import { addThoughtTopic, fetchThoughtTopics, type ThoughtTopic } from "../helper/data";
+import AddThoughtItemModal from "../components/AddThoughtItemModal";
+import {
+  addThoughtItem,
+  addThoughtTopic,
+  fetchThoughtTopics,
+  type NewThoughtItem,
+  type ThoughtTopic,
+} from "../helper/data";
 
 
 /**
@@ -23,6 +30,7 @@ export default function Thoughts() {
 
   // Currently selected topic
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [isAddItemOpen, setIsAddItemOpen] = useState(false);
 
   // Track expanded items per topic (so switching topics remembers open panels)
   const [expandedByTopic, setExpandedByTopic] = useState<Record<string, Set<number>>>(
@@ -67,9 +75,23 @@ export default function Thoughts() {
     setSelectedId((prev) => prev ?? newTopic.id);
   };
 
+  const handleAddThoughtItem = async (item: NewThoughtItem) => {
+    const newItem = await addThoughtItem(item);
+    if (!newItem) return;
+    setTopics((prev) =>
+      prev.map((topic) =>
+        topic.id === newItem.topic_id
+          ? { ...topic, items: [...topic.items, newItem] }
+          : topic
+      )
+    );
+    setSelectedId((prev) => prev ?? newItem.topic_id);
+  };
+
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
+    <>
+      <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
       {/* Nav Bar */}
       <NavBar />
       
@@ -111,6 +133,14 @@ export default function Thoughts() {
                   className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
                 >
                   <span className="text-sky-900 tracking-tight font-semibold">Add Topic</span>
+                </button>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => setIsAddItemOpen(true)}
+                  className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
+                >
+                  <span className="text-sky-900 tracking-tight font-semibold">Add A Post</span>
                 </button>
               </div>
               
@@ -182,6 +212,14 @@ export default function Thoughts() {
           </main>
         </div>
       </div>
-    </div>
+      </div>
+      <AddThoughtItemModal
+        open={isAddItemOpen}
+        topics={topics}
+        initialTopicId={selectedId}
+        onClose={() => setIsAddItemOpen(false)}
+        onSubmit={handleAddThoughtItem}
+      />
+    </>
   );
 }
