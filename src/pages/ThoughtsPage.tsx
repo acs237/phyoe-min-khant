@@ -1,17 +1,20 @@
 import { useMemo, useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 
-import AddThoughtItemModal from "../components/AddThoughtItemModal";
-import DeleteThoughtTopicModal from "../components/DeleteThoughtTopicModal";
+import ThoughtItemModal from "../components/ThoughtItemModal";
+import DeleteThoughtModal from "../components/DeleteThoughtModal";
 import EditThoughtTopicModal from "../components/EditThoughtTopicModal";
 import { ThoughtsLeftCol } from "../components/ThoughtsLeftCol";
 import {
   addThoughtItem,
   addThoughtTopic,
+  deleteThoughtItem,
   deleteThoughtTopic,
   fetchThoughtTopics,
   type NewThoughtItem,
+  type ThoughtItem,
   type ThoughtTopic,
+  updateThoughtItem,
   updateThoughtTopic,
 } from "../helper/data";
 import { ThoughtsRightCol } from "../components/ThoughtsRightCol";
@@ -36,9 +39,13 @@ export default function Thoughts() {
   // Currently selected topic
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isAddItemOpen, setIsAddItemOpen] = useState(false);
+  const [isEditItemOpen, setIsEditItemOpen] = useState(false);
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+  const [openItemMenuId, setOpenItemMenuId] = useState<number | null>(null);
   const [editTopicId, setEditTopicId] = useState<number | null>(null);
   const [deleteTopicId, setDeleteTopicId] = useState<number | null>(null);
+  const [editItemId, setEditItemId] = useState<number | null>(null);
+  const [deleteItemId, setDeleteItemId] = useState<number | null>(null);
 
   // Track expanded items per topic (so switching topics remembers open panels)
   const [expandedByTopic, setExpandedByTopic] = useState<Record<string, Set<number>>>(
@@ -126,6 +133,57 @@ export default function Thoughts() {
     });
   };
 
+  const handleDeleteThoughtItem = async (itemId: number) => {
+    const deleted = await deleteThoughtItem(itemId);
+    if (!deleted) return;
+
+    setTopics((prev) =>
+      prev.map((topic) => ({
+        ...topic,
+        items: topic.items.filter((item) => item.id !== itemId),
+      }))
+    );
+  };
+
+  const handleUpdateThoughtItem = async (
+    itemId: number,
+    item: NewThoughtItem
+  ) => {
+    const updatedItem = await updateThoughtItem({
+      id: itemId,
+      topic_id: item.topic_id,
+      title: item.title,
+      subtitle: item.subtitle,
+      date: item.date,
+      content: item.content,
+      images: item.images,
+    });
+    if (!updatedItem) return;
+
+    setTopics((prev) => {
+      let nextTopics = prev.map((topic) => ({
+        ...topic,
+        items: topic.items.filter((existing) => existing.id !== itemId),
+      }));
+      nextTopics = nextTopics.map((topic) =>
+        topic.id === updatedItem.topic_id
+          ? { ...topic, items: [...topic.items, updatedItem] }
+          : topic
+      );
+      return nextTopics;
+    });
+  };
+
+  const activeEditItem: ThoughtItem | null =
+    topics
+      .flatMap((topic) => topic.items)
+      .find((item) => item.id === editItemId) ?? null;
+
+  const activeDeleteItem: ThoughtItem | null =
+    topics
+      .flatMap((topic) => topic.items)
+      .find((item) => item.id === deleteItemId) ?? null;
+
 
   return (
     <>
@@ -158,17 +216,40 @@ export default function Thoughts() {
             selectedTopic={selectedTopic}
             isExpanded={isExpanded}
             toggleItem={toggleItem}
+            openItemMenuId={openItemMenuId}
+            setOpenItemMenuId={setOpenItemMenuId}
+            onEditItem={(id) => {
+              setEditItemId(id);
+              setIsEditItemOpen(true);
+            }}
+            onDeleteItem={setDeleteItemId}
           />
 
         </div>
       </div>
       </div>
-      <AddThoughtItemModal
+      <ThoughtItemModal
         open={isAddItemOpen}
         topics={topics}
         initialTopicId={selectedId}
         onClose={() => setIsAddItemOpen(false)}
         onSubmit={handleAddThoughtItem}
+      />
+      <ThoughtItemModal
+        open={isEditItemOpen}
+        topics={topics}
+        initialTopicId={selectedId}
+        initialItem={activeEditItem}
+        title="Edit Thought Item"
+        submitLabel="Save Changes"
+        onClose={() => {
+          setIsEditItemOpen(false);
+          setEditItemId(null);
+        }}
+        onSubmit={(item) => {
+          if (editItemId === null) return;
+          return handleUpdateThoughtItem(editItemId, item);
+        }}
       />
       <EditThoughtTopicModal
         open={editTopicId !== null}
@@ -179,13 +260,24 @@ export default function Thoughts() {
           return handleEditTopic(editTopicId, nextLabel);
         }}
       />
-      <DeleteThoughtTopicModal
+      <DeleteThoughtModal
         open={deleteTopicId !== null}
-        topic={topics.find((topic) => topic.id === deleteTopicId) ?? null}
+        label={topics.find((topic) => topic.id === deleteTopicId)?.label ?? null}
+        targetName="topic and all its items"
         onClose={() => setDeleteTopicId(null)}
         onConfirm={() => {
           if (deleteTopicId === null) return;
           return handleDeleteTopic(deleteTopicId);
+        }}
+      />
+      <DeleteThoughtModal
+        open={deleteItemId !== null}
+        label={activeDeleteItem?.title ?? null}
+        targetName="item"
+        onClose={() => setDeleteItemId(null)}
+        onConfirm={() => {
+          if (deleteItemId === null) return;
+          return handleDeleteThoughtItem(deleteItemId);
         }}
       />
     </>

@@ -29,6 +29,16 @@ export type UpdateThoughtTopic = {
   id: number;
   label: string;
 };
+
+export type UpdateThoughtItem = {
+  id: number;
+  topic_id: number;
+  title: string;
+  subtitle?: string | null;
+  date?: string | null;
+  content: string;
+  images?: string[];
+};
   
 export const fetchThoughtTopics = async (): Promise<ThoughtTopic[]> => {
     const addedTopics: ThoughtTopic[] = [];
@@ -146,6 +156,47 @@ export const deleteThoughtTopic = async (topicId: number): Promise<boolean> => {
 
   if (topicError) {
     console.error(topicError);
+    return false;
+  }
+
+  return true;
+};
+
+export const updateThoughtItem = async (
+  item: UpdateThoughtItem
+): Promise<ThoughtItem | null> => {
+  const updateItem = {
+    topic_id: item.topic_id,
+    title: item.title,
+    subtitle: item.subtitle ?? null,
+    date: item.date ?? null,
+    content: item.content,
+    images: item.images ?? [],
+  };
+
+  const { data: itemRow, error: itemError } = await supabase
+    .from("thought_items")
+    .update(updateItem)
+    .eq("id", item.id)
+    .select("id,topic_id,title,subtitle,date,content,images")
+    .single();
+
+  if (itemError) {
+    console.error(itemError);
+    return null;
+  }
+
+  return (itemRow ?? null) as ThoughtItem | null;
+};
+
+export const deleteThoughtItem = async (itemId: number): Promise<boolean> => {
+  const { error: itemError } = await supabase
+    .from("thought_items")
+    .delete()
+    .eq("id", itemId);
+
+  if (itemError) {
+    console.error(itemError);
     return false;
   }
 

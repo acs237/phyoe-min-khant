@@ -1,19 +1,19 @@
-import type { ThoughtTopic } from "../helper/data";
-
-type DeleteThoughtTopicModalProps = {
+type DeleteThoughtModalProps = {
   open: boolean;
-  topic: ThoughtTopic | null;
+  label: string | null;
+  targetName: string;
   onClose: () => void;
   onConfirm: () => Promise<void> | void;
 };
 
-export default function DeleteThoughtTopicModal({
+export default function DeleteThoughtModal({
   open,
-  topic,
+  label,
+  targetName,
   onClose,
   onConfirm,
-}: DeleteThoughtTopicModalProps) {
-  if (!open || !topic) return null;
+}: DeleteThoughtModalProps) {
+  if (!open || !label) return null;
 
   const handleConfirm = async () => {
     await onConfirm();
@@ -35,7 +35,7 @@ export default function DeleteThoughtTopicModal({
         </div>
 
         <p className="mt-3 text-sm text-sky-700">
-          Delete <span className="font-semibold">{topic.label}</span> and all its items?
+          Delete <span className="font-semibold">{label}</span> {targetName}?
         </p>
 
         <div className="mt-6 flex items-center justify-end gap-2">

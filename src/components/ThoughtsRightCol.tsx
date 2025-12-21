@@ -1,17 +1,26 @@
 import type { ThoughtTopic } from "../helper/data";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
+import { EditDeleteDropDown } from "./EditDeleteDropDown";
 
 type ThoughtsRightColProps = {
     selectedTopic: ThoughtTopic | null;
     isExpanded: (topicId: number, id: number) => boolean;
     toggleItem: (topicId: number, id: number) => void;
+    openItemMenuId: number | null;
+    setOpenItemMenuId: (id: number | null) => void;
+    onEditItem: (id: number) => void;
+    onDeleteItem: (id: number) => void;
 }
 
 export const ThoughtsRightCol = ({
     selectedTopic,
     isExpanded,
-    toggleItem
+    toggleItem,
+    openItemMenuId,
+    setOpenItemMenuId,
+    onEditItem,
+    onDeleteItem,
 }: ThoughtsRightColProps) => {
     return(
         <main>
@@ -20,8 +29,9 @@ export const ThoughtsRightCol = ({
             <div className="grid gap-4 grid-cols-1">
               {(selectedTopic?.items ?? []).map((item) => {
                 const open = selectedTopic ? isExpanded(selectedTopic.id, item.id) : false;
+                const menuOpen = openItemMenuId === item.id;
                 return (
-                  <div key={item.id} className="rounded-2xl border-2 border-sky-200 bg-white p-0">
+                  <div key={item.id} className="relative rounded-2xl border-2 border-sky-200 bg-white p-0">
                     {/* Button box */}
                     <button
                       onClick={() => selectedTopic && toggleItem(selectedTopic.id, item.id)}
@@ -41,22 +51,49 @@ export const ThoughtsRightCol = ({
                           </div>
                           <p className="mt-1 text-sm text-sky-600">{item.date}</p>
                         </div>
-                                            
-                        
-                        <span
-                          className={clsx(
-                            "mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border",
-                            open
-                              ? "rotate-45 border-sky-400 text-sky-600"
-                              : "border-sky-200 text-sky-500",
-                            "transition-transform",
-                          )}
-                          aria-hidden
-                        >
-                          +
-                        </span>
+                        <div className="relative flex items-center gap-2">
+                          <span
+                            className={clsx(
+                              "mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border",
+                              open
+                                ? "rotate-45 border-sky-400 text-sky-600"
+                                : "border-sky-200 text-sky-500",
+                              "transition-transform",
+                            )}
+                            aria-hidden
+                          >
+                            +
+                          </span>
+                          <span
+                            role="button"
+                            tabIndex={0}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setOpenItemMenuId(menuOpen ? null : item.id);
+                            }}
+                            onKeyDown={(event) => {
+                              if (event.key !== "Enter" && event.key !== " ") return;
+                              event.preventDefault();
+                              setOpenItemMenuId(menuOpen ? null : item.id);
+                            }}
+                            className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-200 text-sky-600 hover:bg-sky-100"
+                            aria-haspopup="menu"
+                            aria-expanded={menuOpen}
+                            aria-label="Open item menu"
+                          >
+                            ⋮
+                          </span>
+                        </div>
                       </div>
                     </button>
+                    {menuOpen && (
+                      <EditDeleteDropDown
+                        topicId={item.id}
+                        setEditId={onEditItem}
+                        setDeleteId={onDeleteItem}
+                        setOpenId={setOpenItemMenuId}
+                      />
+                    )}
 
                     {/* Collapsible content */}
                     {open && (
