@@ -1,9 +1,11 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
-
-import writing from "../assets/content/writing.json";
 import NavBar from "../components/NavBar";
+
+import { addThoughtTopic, fetchThoughtTopics, type ThoughtTopic } from "../helper/data";
+
+
 /**
  * PersonalJourneyPage
  * - SPA-friendly page for a personal portfolio
@@ -15,38 +17,55 @@ import NavBar from "../components/NavBar";
  */
 export default function Thoughts() {
   // ---- Data model ---------------------------------------------------------
-  // Edit/extend freely. Each topic has a unique `key`, a display `label`,
+  // Edit/extend freely. Each topic has a unique `id`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
-  const topics = writing;
+  const [topics, setTopics] = useState<ThoughtTopic[]>([]);
 
   // Currently selected topic
-  const [selectedKey, setSelectedKey] = useState(topics[0].key);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   // Track expanded items per topic (so switching topics remembers open panels)
-  const [expandedByTopic, setExpandedByTopic] = useState<Record<string, Set<string>>>(
-    () => Object.fromEntries(topics.map((t) => [t.key, new Set()]))
+  const [expandedByTopic, setExpandedByTopic] = useState<Record<string, Set<number>>>(
+    () => Object.fromEntries(topics.map((t) => [String(t.id), new Set()]))
   );
 
   const selectedTopic = useMemo(
-    () => topics.find((t) => t.key === selectedKey)!,
-    [selectedKey, topics]
+    () => topics.find((t) => t.id === selectedId) ?? null,
+    [selectedId, topics]
   );
 
-  const toggleItem = (topicKey: string, id: string) => {
+  const toggleItem = (topicId: number, id: number) => {
     setExpandedByTopic((prev) => {
-      const copy: Record<string, Set<string>> = Object.fromEntries(
-        Object.entries(prev).map(([k, v]) => [k, new Set(v)])
+      const copy: Record<string, Set<number>> = Object.fromEntries(
+        Object.entries(prev).map(([k, v]) => [k, new Set(v as Set<number>)])
       );
-      const set = copy[topicKey] ?? new Set<string>();
+      const set = copy[String(topicId)] ?? new Set<number>();
       if (set.has(id)) set.delete(id);
       else set.add(id);
-      copy[topicKey] = set;
+      copy[String(topicId)] = set;
       return copy;
     });
   };
 
-  const isExpanded = (topicKey: string, id: string) =>
-    expandedByTopic[topicKey]?.has(id);
+  const isExpanded = (topicId: number, id: number) =>
+    expandedByTopic[String(topicId)]?.has(id);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const addedTopics = await fetchThoughtTopics();
+      setTopics(addedTopics);
+      setSelectedId((prev) => prev ?? addedTopics[0]?.id ?? null);
+    };
+    
+    fetch();
+  }, []); 
+
+  const handleAddThoughtTopic = async (newThoughtTopic: string) => {
+    const newTopic = await addThoughtTopic(newThoughtTopic);
+    if (!newTopic) return;
+    setTopics((prev) => [...prev, newTopic]);
+    setSelectedId((prev) => prev ?? newTopic.id);
+  };
 
 
   return (
@@ -69,11 +88,11 @@ export default function Thoughts() {
           <aside className="lg:sticky lg:top-6 self-start">
             <nav className="space-y-2">
               {topics.map((topic) => {
-                const active = topic.key === selectedKey;
+                const active = topic.id === selectedId;
                 return (
                   <button
-                    key={topic.key}
-                    onClick={() => setSelectedKey(topic.key)}
+                    key={topic.id}
+                    onClick={() => setSelectedId(topic.id)}
                     className={clsx(
                       "w-full text-left rounded-xl border-2 px-4 py-3 transition-all font-burmese",
                       active
@@ -86,21 +105,30 @@ export default function Thoughts() {
                   </button>
                 );
               })}
+              <div className="flex justify-center">
+                <button
+                  onClick={() => handleAddThoughtTopic("New Topic")}
+                  className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
+                >
+                  <span className="text-sky-900 tracking-tight font-semibold">Add Topic</span>
+                </button>
+              </div>
+              
             </nav>
           </aside>
 
           {/* Right: Item boxes for selected topic */}
           <main>
-            <h2 className="sr-only">{selectedTopic.label}</h2>
+            <h2 className="sr-only">{selectedTopic?.label ?? "Thoughts"}</h2>
 
             <div className="grid gap-4 grid-cols-1">
-              {selectedTopic.items.map((item) => {
-                const open = isExpanded(selectedTopic.key, item.id);
+              {(selectedTopic?.items ?? []).map((item) => {
+                const open = selectedTopic ? isExpanded(selectedTopic.id, item.id) : false;
                 return (
                   <div key={item.id} className="rounded-2xl border-2 border-sky-200 bg-white p-0">
                     {/* Button box */}
                     <button
-                      onClick={() => toggleItem(selectedTopic.key, item.id)}
+                      onClick={() => selectedTopic && toggleItem(selectedTopic.id, item.id)}
                       className="group w-full rounded-2xl p-5 text-left transition-all hover:bg-sky-50"
                       aria-expanded={open}
                       aria-controls={`${item.id}-panel`}
