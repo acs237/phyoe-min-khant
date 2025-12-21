@@ -4,12 +4,16 @@ import ImageCarousel from "../components/ImageCarousel";
 import NavBar from "../components/NavBar";
 
 import AddThoughtItemModal from "../components/AddThoughtItemModal";
+import DeleteThoughtTopicModal from "../components/DeleteThoughtTopicModal";
+import EditThoughtTopicModal from "../components/EditThoughtTopicModal";
 import {
   addThoughtItem,
   addThoughtTopic,
+  deleteThoughtTopic,
   fetchThoughtTopics,
   type NewThoughtItem,
   type ThoughtTopic,
+  updateThoughtTopic,
 } from "../helper/data";
 
 
@@ -31,6 +35,9 @@ export default function Thoughts() {
   // Currently selected topic
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isAddItemOpen, setIsAddItemOpen] = useState(false);
+  const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+  const [editTopicId, setEditTopicId] = useState<number | null>(null);
+  const [deleteTopicId, setDeleteTopicId] = useState<number | null>(null);
 
   // Track expanded items per topic (so switching topics remembers open panels)
   const [expandedByTopic, setExpandedByTopic] = useState<Record<string, Set<number>>>(
@@ -88,6 +95,36 @@ export default function Thoughts() {
     setSelectedId((prev) => prev ?? newItem.topic_id);
   };
 
+  const handleEditTopic = async (topicId: number, nextLabel: string) => {
+    const trimmedLabel = nextLabel.trim();
+    if (!trimmedLabel) return;
+
+    const updatedTopic = await updateThoughtTopic({
+      id: topicId,
+      label: trimmedLabel,
+    });
+    if (!updatedTopic) return;
+
+    setTopics((prev) =>
+      prev.map((topic) =>
+        topic.id === topicId ? { ...topic, label: updatedTopic.label } : topic
+      )
+    );
+  };
+
+  const handleDeleteTopic = async (topicId: number) => {
+    const deleted = await deleteThoughtTopic(topicId);
+    if (!deleted) return;
+
+    setTopics((prev) => {
+      const remaining = prev.filter((topic) => topic.id !== topicId);
+      setSelectedId((prevSelected) =>
+        prevSelected === topicId ? remaining[0]?.id ?? null : prevSelected
+      );
+      return remaining;
+    });
+  };
+
 
   return (
     <>
@@ -112,19 +149,67 @@ export default function Thoughts() {
               {topics.map((topic) => {
                 const active = topic.id === selectedId;
                 return (
-                  <button
-                    key={topic.id}
-                    onClick={() => setSelectedId(topic.id)}
-                    className={clsx(
-                      "w-full text-left rounded-xl border-2 px-4 py-3 transition-all font-burmese",
-                      active
-                        ? "bg-white border-sky-400 shadow-md text-sky-900"
-                        : "bg-white/70 border-sky-200 hover:bg-sky-50 text-sky-800",
-                )}
-                    aria-pressed={active}
-                  >
-                    <span className="font-semibold">{topic.label}</span>
-                  </button>
+                  <div key={topic.id} className="relative">
+                    <button
+                      onClick={() => {
+                        setSelectedId(topic.id);
+                        setOpenMenuId(null);
+                      }}
+                      className={clsx(
+                        "w-full text-left rounded-xl border-2 px-4 py-3 pr-10 transition-all font-burmese",
+                        active
+                          ? "bg-white border-sky-400 shadow-md text-sky-900"
+                          : "bg-white/70 border-sky-200 hover:bg-sky-50 text-sky-800",
+                      )}
+                      aria-pressed={active}
+                    >
+                      <span className="font-semibold">{topic.label}</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setOpenMenuId((prev) => (prev === topic.id ? null : topic.id));
+                      }}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-sky-600 hover:bg-sky-100"
+                      aria-haspopup="menu"
+                      aria-expanded={openMenuId === topic.id}
+                      aria-label="Open topic menu"
+                    >
+                      ⋮
+                    </button>
+                    {openMenuId === topic.id && (
+                      <div
+                        className="absolute right-3 mt-2 z-20 w-28 rounded-lg border border-sky-100 bg-white py-1 text-sm shadow-lg"
+                        role="menu"
+                      >
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setEditTopicId(topic.id);
+                            setOpenMenuId(null);
+                          }}
+                          className="block w-full px-3 py-2 text-left text-sky-700 hover:bg-sky-50"
+                          role="menuitem"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setDeleteTopicId(topic.id);
+                            setOpenMenuId(null);
+                          }}
+                          className="block w-full px-3 py-2 text-left text-rose-600 hover:bg-rose-50"
+                          role="menuitem"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 );
               })}
               <div className="flex justify-center">
@@ -219,6 +304,24 @@ export default function Thoughts() {
         initialTopicId={selectedId}
         onClose={() => setIsAddItemOpen(false)}
         onSubmit={handleAddThoughtItem}
+      />
+      <EditThoughtTopicModal
+        open={editTopicId !== null}
+        topic={topics.find((topic) => topic.id === editTopicId) ?? null}
+        onClose={() => setEditTopicId(null)}
+        onSubmit={(nextLabel) => {
+          if (editTopicId === null) return;
+          return handleEditTopic(editTopicId, nextLabel);
+        }}
+      />
+      <DeleteThoughtTopicModal
+        open={deleteTopicId !== null}
+        topic={topics.find((topic) => topic.id === deleteTopicId) ?? null}
+        onClose={() => setDeleteTopicId(null)}
+        onConfirm={() => {
+          if (deleteTopicId === null) return;
+          return handleDeleteTopic(deleteTopicId);
+        }}
       />
     </>
   );
