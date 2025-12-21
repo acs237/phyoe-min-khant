@@ -10,7 +10,7 @@ type ThoughtsLeftColProps = {
   setOpenMenuId: (id: number | null) => void;
   setEditTopicId: (id: number) => void;
   setDeleteTopicId: (id: number) => void;
-  onAddTopic: (label: string) => void;
+  onAddTopicRequest: () => void;
   onAddItem: () => void;
 };
 
@@ -22,7 +22,7 @@ export const ThoughtsLeftCol = ({
   setOpenMenuId,
   setEditTopicId,
   setDeleteTopicId,
-  onAddTopic,
+  onAddTopicRequest,
   onAddItem,
 }: ThoughtsLeftColProps) => {
   return (
@@ -73,7 +73,7 @@ export const ThoughtsLeftCol = ({
         })}
         <div className="flex justify-center">
           <button
-            onClick={() => onAddTopic("New Topic")}
+            onClick={onAddTopicRequest}
             className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
           >
             <span className="text-sky-900 tracking-tight font-semibold">Add Topic</span>

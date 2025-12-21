@@ -40,6 +40,7 @@ export default function Thoughts() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isAddItemOpen, setIsAddItemOpen] = useState(false);
   const [isEditItemOpen, setIsEditItemOpen] = useState(false);
+  const [isAddTopicOpen, setIsAddTopicOpen] = useState(false);
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   const [openItemMenuId, setOpenItemMenuId] = useState<number | null>(null);
   const [editTopicId, setEditTopicId] = useState<number | null>(null);
@@ -75,7 +76,8 @@ export default function Thoughts() {
 
   useEffect(() => {
     const fetch = async () => {
-      const addedTopics = await fetchThoughtTopics();
+      let addedTopics = await fetchThoughtTopics();
+      addedTopics = [...addedTopics].sort((a, b) => a.id - b.id);
       setTopics(addedTopics);
       setSelectedId((prev) => prev ?? addedTopics[0]?.id ?? null);
     };
@@ -207,7 +209,7 @@ export default function Thoughts() {
             setOpenMenuId={setOpenMenuId}
             setEditTopicId={setEditTopicId}
             setDeleteTopicId={setDeleteTopicId}
-            onAddTopic={handleAddThoughtTopic}
+            onAddTopicRequest={() => setIsAddTopicOpen(true)}
             onAddItem={() => setIsAddItemOpen(true)}
           />
         
@@ -259,6 +261,14 @@ export default function Thoughts() {
           if (editTopicId === null) return;
           return handleEditTopic(editTopicId, nextLabel);
         }}
+      />
+      <EditThoughtTopicModal
+        open={isAddTopicOpen}
+        title="Add Topic"
+        submitLabel="Add Topic"
+        initialLabel=""
+        onClose={() => setIsAddTopicOpen(false)}
+        onSubmit={(nextLabel) => handleAddThoughtTopic(nextLabel)}
       />
       <DeleteThoughtModal
         open={deleteTopicId !== null}
