@@ -11,6 +11,7 @@ type ThoughtsRightColProps = {
     setOpenItemMenuId: (id: number | null) => void;
     onEditItem: (id: number) => void;
     onDeleteItem: (id: number) => void;
+    isAdmin: boolean | null;
 }
 
 export const ThoughtsRightCol = ({
@@ -21,6 +22,7 @@ export const ThoughtsRightCol = ({
     setOpenItemMenuId,
     onEditItem,
     onDeleteItem,
+    isAdmin
 }: ThoughtsRightColProps) => {
     return(
         <main>
@@ -64,25 +66,27 @@ export const ThoughtsRightCol = ({
                           >
                             +
                           </span>
-                          <span
-                            role="button"
-                            tabIndex={0}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              setOpenItemMenuId(menuOpen ? null : item.id);
-                            }}
-                            onKeyDown={(event) => {
-                              if (event.key !== "Enter" && event.key !== " ") return;
-                              event.preventDefault();
-                              setOpenItemMenuId(menuOpen ? null : item.id);
-                            }}
-                            className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-200 text-sky-600 hover:bg-sky-100"
-                            aria-haspopup="menu"
-                            aria-expanded={menuOpen}
-                            aria-label="Open item menu"
-                          >
-                            ⋮
-                          </span>
+                          {  isAdmin &&
+                            <span
+                                role="button"
+                                tabIndex={0}
+                                onClick={(event) => {
+                                event.stopPropagation();
+                                setOpenItemMenuId(menuOpen ? null : item.id);
+                                }}
+                                onKeyDown={(event) => {
+                                if (event.key !== "Enter" && event.key !== " ") return;
+                                event.preventDefault();
+                                setOpenItemMenuId(menuOpen ? null : item.id);
+                                }}
+                                className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-200 text-sky-600 hover:bg-sky-100"
+                                aria-haspopup="menu"
+                                aria-expanded={menuOpen}
+                                aria-label="Open item menu"
+                            >
+                                ⋮
+                            </span>
+                          }
                         </div>
                       </div>
                     </button>

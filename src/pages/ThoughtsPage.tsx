@@ -19,6 +19,8 @@ import {
 } from "../helper/data";
 import { ThoughtsRightCol } from "../components/ThoughtsRightCol";
 import { ThoughtsHeader } from "../components/ThoughtsHeader";
+import { getSession, getUser } from "../helper/auth";
+import { supabase } from "../helper/supabase";
 
 
 /**
@@ -31,6 +33,10 @@ import { ThoughtsHeader } from "../components/ThoughtsHeader";
  * Styling: TailwindCSS
  */
 export default function Thoughts() {
+
+  // admin check
+  const [isAdmin, setIsAdmin] = useState(false);
+
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `id`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
@@ -84,6 +90,18 @@ export default function Thoughts() {
     
     fetch();
   }, []); 
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const { data } = await getUser();
+      setIsAdmin(!!data.user);
+      const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+        setIsAdmin(!!session);
+      });
+      return () => sub.subscription.unsubscribe();
+    }
+    checkAdmin();
+  }, []);
 
   const handleAddThoughtTopic = async (newThoughtTopic: string) => {
     const newTopic = await addThoughtTopic(newThoughtTopic);
@@ -211,6 +229,7 @@ export default function Thoughts() {
             setDeleteTopicId={setDeleteTopicId}
             onAddTopicRequest={() => setIsAddTopicOpen(true)}
             onAddItem={() => setIsAddItemOpen(true)}
+            isAdmin={isAdmin}
           />
         
           {/* Right: Item boxes for selected topic */}
@@ -225,6 +244,7 @@ export default function Thoughts() {
               setIsEditItemOpen(true);
             }}
             onDeleteItem={setDeleteItemId}
+            isAdmin={isAdmin}
           />
 
         </div>

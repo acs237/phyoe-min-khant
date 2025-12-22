@@ -12,6 +12,7 @@ type ThoughtsLeftColProps = {
   setDeleteTopicId: (id: number) => void;
   onAddTopicRequest: () => void;
   onAddItem: () => void;
+  isAdmin: boolean | null;
 };
 
 export const ThoughtsLeftCol = ({
@@ -24,6 +25,7 @@ export const ThoughtsLeftCol = ({
   setDeleteTopicId,
   onAddTopicRequest,
   onAddItem,
+  isAdmin
 }: ThoughtsLeftColProps) => {
   return (
     <aside className="lg:sticky lg:top-6 self-start">
@@ -47,7 +49,10 @@ export const ThoughtsLeftCol = ({
               >
                 <span className="font-semibold">{topic.label}</span>
               </button>
-              <button
+
+              {
+                isAdmin && 
+                <button
                 type="button"
                 onClick={(event) => {
                   event.stopPropagation();
@@ -57,9 +62,11 @@ export const ThoughtsLeftCol = ({
                 aria-haspopup="menu"
                 aria-expanded={openMenuId === topic.id}
                 aria-label="Open topic menu"
-              >
-                ⋮
-              </button>
+                >
+                  ⋮
+                </button>
+              }
+              
               {openMenuId === topic.id && (
                 <EditDeleteDropDown
                   topicId={topic.id}
@@ -71,22 +78,30 @@ export const ThoughtsLeftCol = ({
             </div>
           );
         })}
-        <div className="flex justify-center">
-          <button
-            onClick={onAddTopicRequest}
-            className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
-          >
-            <span className="text-sky-900 tracking-tight font-semibold">Add Topic</span>
-          </button>
-        </div>
-        <div className="flex justify-center">
-          <button
-            onClick={onAddItem}
-            className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
-          >
-            <span className="text-sky-900 tracking-tight font-semibold">Add A Post</span>
-          </button>
-        </div>
+        {
+          isAdmin && 
+          <div className="flex justify-center">
+            <button
+              onClick={onAddTopicRequest}
+              className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
+            >
+              <span className="text-sky-900 tracking-tight font-semibold">Add Topic</span>
+            </button>
+          </div>
+        }
+        
+        {
+          isAdmin &&
+          <div className="flex justify-center">
+            <button
+              onClick={onAddItem}
+              className="inline-flex items-center justify-center rounded-xl border-2 border-sky-200 px-3 py-2 text-sky-900 transition-all hover:bg-sky-200 font-burmese"
+            >
+              <span className="text-sky-900 tracking-tight font-semibold">Add A Post</span>
+            </button>
+          </div>
+        }
+        
       </nav>
     </aside>
   );

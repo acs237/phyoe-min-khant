@@ -4,6 +4,7 @@ import Thoughts from './pages/ThoughtsPage';
 import Buildings from './pages/BuildingsPage';
 import Notes from './pages/NotesPage';
 import ContactMe from './components/ContactMe';
+import AdminPage from './pages/AdminPage';
 
 const PageList = () => {
     return (
@@ -13,9 +14,11 @@ const PageList = () => {
             <Route path='/buildings' element={<Buildings />} />
             <Route path='/notes' element={<Notes />} />
             <Route path='/contact' element={<ContactMe />} />
+            <Route path='/admin' element={<AdminPage />} />
             <Route path='/vlog' element={<div>Vlog Page</div>} />
             <Route path='/coaching' element={<div>Coaching Page</div>} />
             <Route path='/about-me' element={<div>About Me Page</div>} />
+            
         </Routes>
     )
 };
