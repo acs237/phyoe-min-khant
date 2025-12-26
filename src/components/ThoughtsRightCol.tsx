@@ -1,6 +1,7 @@
 import type { ThoughtTopic } from "../helper/data";
 import clsx from "clsx";
 import ImageCarousel from "../components/ImageCarousel";
+import { getPublicImageUrl } from "../helper/images";
 import { EditDeleteDropDown } from "./EditDeleteDropDown";
 
 type ThoughtsRightColProps = {
@@ -107,9 +108,9 @@ export const ThoughtsRightCol = ({
                         className="mx-5 mb-5 mt-0 overflow-hidden rounded-xl border border-sky-100 bg-sky-50/60 p-4 text-sky-800"
                       >
                         {item.content}
-                        <ImageCarousel
-                            images={item.images}
-                        />
+                        {item.images.length > 0 && (
+                          <ImageCarousel images={item.images.map(getPublicImageUrl)} />
+                        )}
                       </div>
                     )}
                   </div>

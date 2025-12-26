@@ -19,7 +19,7 @@ import {
 } from "../helper/data";
 import { ThoughtsRightCol } from "../components/ThoughtsRightCol";
 import { ThoughtsHeader } from "../components/ThoughtsHeader";
-import { getSession, getUser } from "../helper/auth";
+import { getUser } from "../helper/auth";
 import { supabase } from "../helper/supabase";
 
 

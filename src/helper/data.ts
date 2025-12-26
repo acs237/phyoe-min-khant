@@ -1,3 +1,4 @@
+import { removeImages } from "./images";
 import { supabase } from "./supabase";
 
 export type ThoughtItem = {
@@ -165,13 +166,28 @@ export const deleteThoughtTopic = async (topicId: number): Promise<boolean> => {
 export const updateThoughtItem = async (
   item: UpdateThoughtItem
 ): Promise<ThoughtItem | null> => {
+  const { data: existingRow, error: fetchError } = await supabase
+    .from("thought_items")
+    .select("images")
+    .eq("id", item.id)
+    .single();
+
+  if (fetchError) {
+    console.error(fetchError);
+    return null;
+  }
+
+  const existingImages = existingRow?.images ?? [];
+  const nextImages = item.images ?? [];
+  const removedImages = existingImages.filter((path: string) => !nextImages.includes(path));
+
   const updateItem = {
     topic_id: item.topic_id,
     title: item.title,
     subtitle: item.subtitle ?? null,
     date: item.date ?? null,
     content: item.content,
-    images: item.images ?? [],
+    images: nextImages,
   };
 
   const { data: itemRow, error: itemError } = await supabase
@@ -186,10 +202,37 @@ export const updateThoughtItem = async (
     return null;
   }
 
+  if (removedImages.length > 0) {
+    const { error: removeError } = await removeImages(removedImages);
+    if (removeError) {
+      console.error(removeError);
+    }
+  }
+
   return (itemRow ?? null) as ThoughtItem | null;
 };
 
 export const deleteThoughtItem = async (itemId: number): Promise<boolean> => {
+  const { data: itemRow, error: fetchError } = await supabase
+    .from("thought_items")
+    .select("images")
+    .eq("id", itemId)
+    .single();
+
+  if (fetchError) {
+    console.error(fetchError);
+    return false;
+  }
+
+  const imagePaths = itemRow?.images ?? [];
+  if (imagePaths.length > 0) {
+    const { error: removeError } = await removeImages(imagePaths);
+    if (removeError) {
+      console.error(removeError);
+      return false;
+    }
+  }
+
   const { error: itemError } = await supabase
     .from("thought_items")
     .delete()
