@@ -62,8 +62,13 @@ export const fetchThoughtTopics = async (): Promise<ThoughtTopic[]> => {
         console.error(itemError);
         continue;
       }
-      
-      const addedTopicItems = (itemRows ?? []) as ThoughtItem[];
+
+      // sorting the thought items in reverse added time
+      // since date is in Burmese, I will just rely on id
+      let addedTopicItems = [] as ThoughtItem[];
+      if (itemRows) {
+        addedTopicItems = itemRows.sort((a, b) => b.id - a.id);
+      }
       
       const addedTopic = {
         id: topic.id,
