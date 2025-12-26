@@ -17,7 +17,7 @@ export default function RotatingText({sentences}: RotatingTextProps) {
   }, [sentences.length]);
 
   return (
-    <div className="h-40 md:h-20">
+    <div className="h-40 md:h-20 flex align-center">
       <AnimatePresence mode="wait">
         <motion.h1
           key={sentences[index]}

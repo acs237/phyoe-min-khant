@@ -94,13 +94,16 @@ export default function Thoughts() {
   useEffect(() => {
     const checkAdmin = async () => {
       const { data } = await getUser();
-      setIsAdmin(!!data.user);
-      const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-        setIsAdmin(!!session);
-      });
-      return () => sub.subscription.unsubscribe();
-    }
+      setIsAdmin(!!(data.user?.id === import.meta.env.VITE_ADMIN_ID));
+    };
+
     checkAdmin();
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsAdmin(!!(session?.user.id === import.meta.env.VITE_ADMIN_ID));
+    });
+
+    return () => sub.subscription.unsubscribe();
   }, []);
 
   const handleAddThoughtTopic = async (newThoughtTopic: string) => {
