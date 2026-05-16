@@ -10,10 +10,8 @@ import {
   addThoughtTopic,
   deleteThoughtItem,
   deleteThoughtTopic,
-  fetchThoughtTopics,
   type NewThoughtItem,
   type ThoughtItem,
-  type ThoughtTopic,
   updateThoughtItem,
   updateThoughtTopic,
 } from "../helper/data";
@@ -21,7 +19,7 @@ import { ThoughtsRightCol } from "../components/ThoughtsRightCol";
 import { ThoughtsHeader } from "../components/ThoughtsHeader";
 import { getUser } from "../helper/auth";
 import { supabase } from "../helper/supabase";
-
+import { useThoughts } from "../helper/ThoughtsContext";
 
 /**
  * PersonalJourneyPage
@@ -40,7 +38,7 @@ export default function Thoughts() {
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `id`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
-  const [topics, setTopics] = useState<ThoughtTopic[]>([]);
+  const { topics, setTopics } = useThoughts();
 
   // Currently selected topic
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -81,15 +79,16 @@ export default function Thoughts() {
     expandedByTopic[String(topicId)]?.has(id);
 
   useEffect(() => {
-    const fetch = async () => {
+    setSelectedId((prev) => prev ?? topics[0]?.id ?? null);
+    /* const fetch = async () => {
       let addedTopics = await fetchThoughtTopics();
       addedTopics = [...addedTopics].sort((a, b) => a.id - b.id);
       setTopics(addedTopics);
       setSelectedId((prev) => prev ?? addedTopics[0]?.id ?? null);
     };
     
-    fetch();
-  }, []); 
+    fetch(); */
+  }, [topics]); 
 
   useEffect(() => {
     const checkAdmin = async () => {
