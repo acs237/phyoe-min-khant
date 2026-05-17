@@ -4,8 +4,6 @@ import {
   Download,
   ExternalLink,
   FolderOpen,
-  ChevronLeft,
-  ChevronRight,
   FolderClosed,
 } from "lucide-react";
 import {
@@ -20,7 +18,6 @@ import NavBar from "../components/NavBar.tsx";
 
 const Notes: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Doc | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
     mathematics1: false,
     mathematics2: false,
@@ -81,6 +78,11 @@ const Notes: React.FC = () => {
   };
 
   const selectDocument = (doc: Doc) => {
+    const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
+    if (isSmallScreen) {
+      window.open(doc.url, "_blank", "noopener,noreferrer");
+      return;
+    }
     setSelectedDocument(doc);
   };
 
@@ -95,18 +97,15 @@ const Notes: React.FC = () => {
           My Notes
         </h1>
       </div>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         {/* Sidebar */}
         <div
-          className={`
-              h-screen
-              ${sidebarOpen ? "auto" : "fixed"}
-               z-50 w-60 md:w-80 transform bg-white border-r border-gray-200 flex flex-col 
-              bg-gradient-to-b from-sky-50 to-white
-              transition-transform duration-300 ease-in-out
-              ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-              md:translate-x-0 md:static md:flex
-            `}
+          className="
+            w-full md:w-80
+            h-screen
+            bg-white border-r border-gray-200 flex flex-col
+            bg-gradient-to-b from-sky-50 to-white
+          "
         >
           
           {/* Mathematics Section */}
@@ -156,25 +155,7 @@ const Notes: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          {/* Toggle button (only shows on small screens) */}
-          <button
-            className="md:hidden text-sky-900 inline-flex items-center space-x-2 border-2 border-sky-200 bg-white hover:bg-sky-50 rounded-xl m-4 px-3 py-2 shadow-md"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          >
-            {sidebarOpen ? (
-              <>
-                <ChevronLeft className="w-6 h-6" />
-                <p>Close</p>
-              </>
-            ) : (
-              <>
-                <ChevronRight className="w-6 h-6" />
-                <p>Open</p>
-              </>
-            )}
-            
-          </button>
+        <div className="hidden md:flex flex-1 flex-col overflow-hidden">          
           {selectedDocument ? (
             <>
               {/* Header */}
