@@ -38,7 +38,7 @@ export default function Thoughts() {
   // ---- Data model ---------------------------------------------------------
   // Edit/extend freely. Each topic has a unique `id`, a display `label`,
   // and a list of `items`, where each item has an `id`, `title`, and `content`.
-  const { topics, setTopics } = useThoughts();
+  const { topics, setTopics, loading } = useThoughts();
 
   // Currently selected topic
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -219,37 +219,43 @@ export default function Thoughts() {
         <ThoughtsHeader />
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[250px_1fr]">
-          {/* Left: Display topics */}
-          <ThoughtsLeftCol
-            topics={topics}
-            selectedId={selectedId}
-            openMenuId={openMenuId}
-            setSelectedId={setSelectedId}
-            setOpenMenuId={setOpenMenuId}
-            setEditTopicId={setEditTopicId}
-            setDeleteTopicId={setDeleteTopicId}
-            onAddTopicRequest={() => setIsAddTopicOpen(true)}
-            onAddItem={() => setIsAddItemOpen(true)}
-            isAdmin={isAdmin}
-          />
-        
-          {/* Right: Item boxes for selected topic */}
-          <ThoughtsRightCol
-            selectedTopic={selectedTopic}
-            isExpanded={isExpanded}
-            toggleItem={toggleItem}
-            openItemMenuId={openItemMenuId}
-            setOpenItemMenuId={setOpenItemMenuId}
-            onEditItem={(id) => {
-              setEditItemId(id);
-              setIsEditItemOpen(true);
-            }}
-            onDeleteItem={setDeleteItemId}
-            isAdmin={isAdmin}
-          />
+        {loading ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-sky-200 border-t-sky-600" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[250px_1fr]">
+            {/* Left: Display topics */}
+            <ThoughtsLeftCol
+              topics={topics}
+              selectedId={selectedId}
+              openMenuId={openMenuId}
+              setSelectedId={setSelectedId}
+              setOpenMenuId={setOpenMenuId}
+              setEditTopicId={setEditTopicId}
+              setDeleteTopicId={setDeleteTopicId}
+              onAddTopicRequest={() => setIsAddTopicOpen(true)}
+              onAddItem={() => setIsAddItemOpen(true)}
+              isAdmin={isAdmin}
+            />
+          
+            {/* Right: Item boxes for selected topic */}
+            <ThoughtsRightCol
+              selectedTopic={selectedTopic}
+              isExpanded={isExpanded}
+              toggleItem={toggleItem}
+              openItemMenuId={openItemMenuId}
+              setOpenItemMenuId={setOpenItemMenuId}
+              onEditItem={(id) => {
+                setEditItemId(id);
+                setIsEditItemOpen(true);
+              }}
+              onDeleteItem={setDeleteItemId}
+              isAdmin={isAdmin}
+            />
 
-        </div>
+          </div>
+        )}
       </div>
       </div>
       <ThoughtItemModal
